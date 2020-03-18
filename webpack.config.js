@@ -26,14 +26,14 @@ module.exports = {
     host: '0.0.0.0',
     disableHostCheck: true,
     clientLogLevel: 'silent',
-    // open: true,
+    open: true,
     historyApiFallback: true,
     quiet: true,
     hot: true,
     stats: 'errors-warnings',
     proxy: {
       '/mgt': {
-        target: 'https://lepebble.beansmile-dev.com',
+        target: '',
         changeOrigin: true,
         secure: false,
       },

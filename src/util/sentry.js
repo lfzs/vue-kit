@@ -4,8 +4,8 @@ import * as Integrations from '@sentry/integrations'
 
 if (process.env.NODE_ENV === 'development') {
   Vue.config.errorHandler = (error, vm, info) => {
-    console.log(error) //eslint-disable-line no-console
-    console.log(info) //eslint-disable-line no-console
+    console.error(error) //eslint-disable-line no-console
+    console.error(info) //eslint-disable-line no-console
   }
 } else {
   Sentry.init({

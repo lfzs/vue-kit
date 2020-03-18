@@ -4,6 +4,7 @@
     <div @click="nav">username: {{ user.nickname }}</div>
     <h2>{{ info.customer_service_name }}</h2>
     <el-button type="primary" icon="el-icon-search" @click="search">搜索</el-button>
+    <el-button type="primary" icon="el-icon-switch-button" @click="quit">退出登陆</el-button>
   </div>
 </template>
 
@@ -46,6 +47,11 @@
 
       search() {
         this.$message('hihi')
+      },
+
+      async quit() {
+        await axios.delete('sessions')
+        this.$router.go(0)
       },
     },
   }

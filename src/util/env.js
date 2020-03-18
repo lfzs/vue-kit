@@ -1,12 +1,12 @@
 const env = {
   development: {
-    host: 'http://127.0.0.1:3000',
+    host: '',
   },
   staging: {
-    host: 'https://lepebble.beansmile-dev.com',
+    host: '',
   },
   production: {
-    host: 'https://www.lepebble.com',
+    host: '',
   },
 }
 
