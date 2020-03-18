@@ -18,6 +18,8 @@ window.axios = axios
 window.dayjs = dayjs
 window.Big = Big
 
+Vue.config.productionTip = false
+
 new Vue({
   el: '#app',
   router,
