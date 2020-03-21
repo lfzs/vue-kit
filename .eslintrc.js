@@ -75,8 +75,8 @@ module.exports = {
     'template-curly-spacing': 2,
 
     /* 覆盖 Vue 的规则 */
-    'vue/component-name-in-template-casing':[2, 'kebab-case'],
-    'vue/html-self-closing': [2, { 'html': { 'void': 'always' }}],
+    'vue/component-name-in-template-casing': [2, 'kebab-case'],
+    'vue/html-self-closing': [2, { 'html': { 'void': 'always' } }],
     'vue/max-attributes-per-line': 0,
     'vue/name-property-casing': [2, 'kebab-case'],
     'vue/script-indent': [2, 2, { 'baseIndent': 1 }],
