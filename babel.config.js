@@ -10,5 +10,5 @@ module.exports = {
     ['@babel/plugin-transform-runtime', { 'corejs': { 'version': 3, 'proposals': true } }],
     ['@babel/plugin-proposal-decorators', { 'legacy': true }],
     ['@babel/plugin-proposal-class-properties', { 'loose': true }],
-  ]
+  ],
 }
