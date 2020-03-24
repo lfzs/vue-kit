@@ -51,7 +51,7 @@ module.exports = {
   ].concat(isDev ? [] : [new CleanWebpackPlugin(), new MiniCssExtractPlugin({ filename: '[name].[hash:4].css' }), new OptimizeCSSAssetsPlugin()]),
   module: {
     rules: [
-      { test: /\.(js|vue)$/, use: [{ loader: 'eslint-loader', options: { failOnWarning: !isDev } }], exclude: /node_modules/, enforce: 'pre' },
+      { test: /\.(js|vue)$/, use: [{ loader: 'eslint-loader', options: { cache: true, emitWarning: isDev, emitError: !isDev } }], exclude: /node_modules/, enforce: 'pre' },
       { test: /\.vue$/, use: 'vue-loader', exclude: /node_modules/ },
       { test: /\.js$/, use: 'babel-loader', exclude: /node_modules/ },
 
