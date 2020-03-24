@@ -8,11 +8,12 @@ import VueLazyload from 'vue-lazyload'
 import router from '@/router'
 import app from '@/app'
 
-import { axios } from '@/util'
+import { axios, formatTime } from '@/util'
 import dayjs from 'dayjs'
 import Big from 'big.js'
 
 Vue.use(VueLazyload)
+Vue.filter('formatTime', formatTime)
 
 window.axios = axios
 window.dayjs = dayjs
