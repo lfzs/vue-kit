@@ -18,6 +18,14 @@ function handleRequestError(error) {
 }
 
 function handleResponse(res) {
+  const { headers = {} } = res
+  if (headers['x-page']) {
+    res.meta = {
+      per_page: +headers['x-per-page'][0],
+      page: +headers['x-page'][0],
+      total: +headers['x-total'][0],
+    }
+  }
   return res
 }
 
