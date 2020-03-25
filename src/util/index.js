@@ -1,5 +1,6 @@
 export { host } from './env'
 export * from './constant'
 export sleep from './sleep'
+export fetchAction from './fetch-action'
 export axios from './axios'
 export { formatTime } from './filter'
