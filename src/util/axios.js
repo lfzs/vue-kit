@@ -5,16 +5,11 @@ import { authStore } from '@/store'
 import { Message } from 'element-ui'
 
 axios.defaults.baseURL = `${host}/mgt/api/v1`
-axios.interceptors.request.use(handleRequest, handleRequestError)
+axios.interceptors.request.use(handleRequest)
 axios.interceptors.response.use(handleResponse, handleResponseError)
 
 function handleRequest(request) {
   return request
-}
-
-function handleRequestError(error) {
-  Message.error({ message: '请求超时！' })
-  return Promise.resolve(error)
 }
 
 function handleResponse(res) {
