@@ -1,6 +1,6 @@
 <template>
   <div>
-    <img src="@/assets/logo.png" alt="" />
+    <img src="@/static/logo.png" alt="" />
     <div @click="nav">username: {{ user.nickname }}</div>
     <h2>{{ info.customer_service_name }}</h2>
     <el-button type="primary" icon="el-icon-search" @click="search">搜索</el-button>

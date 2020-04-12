@@ -2,8 +2,8 @@ html {
   box-sizing: border-box;
   word-break: break-word;
   font-family: system -apple-system, BlinkMacSystemFont, 'Helvetica Neue', 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', Arial, sans-serif;
-  color: #314659;
-  background-color: #f4f5f5;
+  color: @color;
+  background-color: @bg;
   line-height: 1.5;
   font-size: 14px;
 }
@@ -13,6 +13,18 @@ html {
 *::after {
   box-sizing: inherit;
 }
+
+a { text-decoration: none; }
+
+input {
+  outline: none;
+  border: none;
+  font-size: 14px;
+}
+
+::-moz-placeholder { color: @placeholder; }
+::-webkit-input-placeholder { color: @placeholder; }
+:-ms-input-placeholder { color: @placeholder; }
 
 .text-overflow-1 {
   overflow: hidden;
@@ -42,9 +54,26 @@ html {
   justify-content: space-between;
 }
 
+.flex-middle {
+  display: flex;
+  align-items: center;
+}
+
+.flex-auto {
+  flex: auto; // 1 1 auto 放大
+}
+
+.flex-none {
+  flex: none; // 0 0 auto 不缩小
+}
+
 .icon(@width: 20px, @height: 20px) {
   width: @width;
   height: @height;
 }
 
 .icon-logo { .icon(50px, 50px); }
+
+.pointer {
+  cursor: pointer;
+}
