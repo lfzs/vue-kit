@@ -46,7 +46,7 @@ module.exports = {
     // new BundleAnalyzerPlugin(),
     new FriendlyErrorsWebpackPlugin(),
     new VueLoaderPlugin(),
-    new StyleLintPlugin({ files: '**/*.{vue,html,css,less,scss,sass}', context: './src' }),
+    new StyleLintPlugin({ files: '**/*.{vue,html,css,less,scss,sass}', context: './src', emitWarning: isDev, emitError: !isDev }),
     new HtmlWebpackPlugin({ template: './public/index.html', favicon: './public/favicon.ico' }),
   ].concat(isDev ? [] : [new CleanWebpackPlugin(), new MiniCssExtractPlugin({ filename: '[name].[hash:4].css' }), new OptimizeCSSAssetsPlugin()]),
   module: {
