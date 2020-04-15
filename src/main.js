@@ -1,5 +1,5 @@
 import '@/component'
-import '@/component-element-ui'
+import '@/component/element-ui'
 import '@/util/sentry'
 
 import Vue from 'vue'
