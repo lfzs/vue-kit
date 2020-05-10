@@ -11,8 +11,6 @@
   import { authStore } from '@/store'
 
   export default {
-    name: 'login',
-
     data() {
       return {
         mobile: '',
@@ -20,11 +18,15 @@
       }
     },
 
+    mounted() {
+      const { next } = this.$route.query
+      next && authStore.setNext(next)
+    },
+
     methods: {
       async signin() {
         await authStore.signin({ mobile: this.mobile, password: this.password })
-        await this.$router.push(authStore.next)
-        authStore.signinNext('home')
+        authStore.signinNext()
       },
     },
 

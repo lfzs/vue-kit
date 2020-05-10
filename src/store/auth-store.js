@@ -1,8 +1,14 @@
+import router from '@/router'
+
 export default new class {
 
-  next = 'home' // 登陆成功后需要跳转的页面
-  signinNext(path = 'home') {
-    this.next = path
+  next = '' // 登陆成功后需要跳转的页面
+  setNext(path) {
+    this.next || (this.next = path)
+  }
+
+  signinNext() {
+    this.next ? (location.href = this.next) : router.replace({ path: '/' })
   }
 
   signin({ mobile = '', password = '' }) {
