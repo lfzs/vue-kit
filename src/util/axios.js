@@ -28,12 +28,8 @@ async function handleResponseError(error) {
   const { response: { data, status }, config: { errorTips = true } } = error
 
   if (status === 401) {
-    authStore.signinNext(router.currentRoute.fullPath)
-    try {
-      await router.replace({ path: 'signin' })
-    } catch (e) {
-      return Promise.reject(error.response)
-    }
+    authStore.setNext(location.href)
+    await router.replace({ path: 'signin' })
   } else {
     errorTips && Message.error({ message: data.error_message || '请求失败，请重试' })
   }
