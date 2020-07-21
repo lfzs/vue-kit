@@ -1,28 +1,23 @@
-import '@/component'
-import '@/component/element-ui'
-import '@/util/sentry'
+import '@/component' // 组件全局注册
+import '@/component/element-ui' // element 组件全局注册
+import '@/helper/sentry'
 
-import Vue from 'vue'
-import VueLazyload from 'vue-lazyload'
-
-import router from '@/router'
-import app from '@/app'
-
-import { axios, formatTime } from '@/util'
+import axios from '@/helper/axios'
 import dayjs from 'dayjs'
 import Big from 'big.js'
-
-Vue.use(VueLazyload)
-Vue.filter('formatTime', formatTime)
-
 window.axios = axios
 window.dayjs = dayjs
 window.Big = Big
 
+import Vue from 'vue'
 Vue.config.productionTip = false
 
-new Vue({
-  el: '#app',
-  router,
-  render: h => h(app),
-})
+import { formatTime } from '@/filter'
+Vue.filter('formatTime', formatTime)
+
+import VueLazyload from 'vue-lazyload'
+Vue.use(VueLazyload)
+
+import router from '@/router'
+import app from '@/app'
+new Vue({ el: '#app', router, render: h => h(app) })
