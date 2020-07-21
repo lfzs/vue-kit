@@ -1,7 +1,7 @@
 import { fetchAction } from '@/util'
 import { Cache } from '@/store'
 
-export default class ItemDetailStore extends Cache {
+export default class extends Cache {
 
   @fetchAction
   fetchData() {

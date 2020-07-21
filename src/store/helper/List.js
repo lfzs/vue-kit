@@ -25,6 +25,7 @@ export default class {
   }
 
   async fetchMoreData() {
+    if (this.state === 'pending') return
     if (!this.canLoadmore) return
 
     this.state = 'pending'
@@ -60,20 +61,25 @@ export default class {
     if (index > -1) this.data.splice(index, 1, newItem)
   }
 
-  unshift(item) {
-    this.data.unshift(item)
-    this.meta.total += 1
+  unshiftOrUpdate(newItem) {
+    const index = this.data.findIndex(item => +item.id === +newItem.id)
+    if (index > -1) {
+      this.data.splice(index, 1, newItem)
+    } else {
+      this.data.unshift(newItem)
+      this.meta.total += 1
+    }
   }
 
   get listStatus() {
     return {
-      isNoMore: this.state === 'done' && this.data.length && this.data.length >= this.meta.total,
-      isLoadingMore: this.state === 'pending' && this.data.length,
+      isNoMore: this.state === 'done' && this.data.length >= this.meta.total,
+      isLoading: this.state === 'pending',
       isEmpty: this.state !== 'pending' && !this.data.length,
     }
   }
 
   get canLoadmore() {
-    return this.state === 'done' && this.data.length && this.data.length < this.meta.total
+    return this.state === 'done' && this.data.length < this.meta.total
   }
 }

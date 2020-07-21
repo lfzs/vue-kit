@@ -3,7 +3,7 @@
     <h1>登陆</h1>
     <input v-model="mobile" />
     <input v-model="password" />
-    <button @click="signin">登陆</button>
+    <el-button @click="signin">登陆</el-button>
   </div>
 </template>
 

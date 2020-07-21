@@ -1,5 +1,6 @@
 import axios from 'axios'
-import { host } from '@/util'
+import { getErrorMessage } from '@/util'
+import { host } from '@/env'
 import router from '@/router'
 import { authStore } from '@/store'
 import { Message } from 'element-ui'
@@ -31,7 +32,7 @@ async function handleResponseError(error) {
     authStore.setNext(location.href)
     await router.replace({ path: 'signin' })
   } else {
-    errorTips && Message.error({ message: data.error_message || '请求失败，请重试' })
+    errorTips && Message.error({ message: getErrorMessage(data.error_message) })
   }
 
   return Promise.reject(error.response)

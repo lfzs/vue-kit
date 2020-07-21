@@ -4,14 +4,7 @@
 
 import Vue from 'vue'
 import {
-  Loading,
-  MessageBox,
-  Message,
   Button,
 } from 'element-ui'
 
 Vue.component(Button.name, Button)
-
-Vue.prototype.$loading = Loading.service
-Vue.prototype.$msgbox = MessageBox
-Vue.prototype.$message = Message
