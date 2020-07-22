@@ -3,7 +3,7 @@ module.exports = {
   comments: false,
   plugins: [
     'lodash',
-    ['component', { 'libraryName': 'element-ui', 'styleLibraryName': 'theme-chalk' }],
+    ['component', { 'libraryName': 'element-ui', 'styleLibraryName': '~theme' }],
     '@babel/plugin-proposal-export-default-from',
     '@babel/plugin-proposal-optional-chaining',
     '@babel/plugin-proposal-nullish-coalescing-operator',
