@@ -56,8 +56,8 @@ module.exports = {
       { test: /\.js$/, use: 'babel-loader', exclude: /node_modules/ },
 
       { test: /\.css$/, use: [isDev ? 'vue-style-loader' : MiniCssExtractPlugin.loader, 'css-loader', 'postcss-loader'] },
-      { test: /\.less$/, use: [isDev ? 'vue-style-loader' : MiniCssExtractPlugin.loader, 'css-loader', 'postcss-loader', { loader: 'less-loader', options: { globalVars: require('./src/style/less-var') } }] },
-      // { test: /\.scss$/, use: [isDev ? 'vue-style-loader' : MiniCssExtractPlugin.loader, 'css-loader', 'postcss-loader', { loader: 'sass-loader', options: { prependData: '@import "~@/style/sass-var.scss";' } }] },
+      { test: /\.less$/, use: [isDev ? 'vue-style-loader' : MiniCssExtractPlugin.loader, 'css-loader', 'postcss-loader', { loader: 'less-loader', options: { prependData: '@import "~@/style/less-var.less";' } }] },
+      { test: /\.scss$/, use: [isDev ? 'vue-style-loader' : MiniCssExtractPlugin.loader, 'css-loader', 'postcss-loader', { loader: 'sass-loader', options: { additionalData: '@import "~@/style/sass-var.scss";' } }] },
 
       { test: /\.(png|jpg|gif|jpeg|svg)$/, use: [{ loader: 'file-loader', options: { name: '[name].[hash:4].[ext]', outputPath: 'static/', esModule: false } }] },
       { test: /\.(woff|woff2|eot|ttf|otf)$/, use: [{ loader: 'file-loader', options: { name: '[name].[hash:4].[ext]', outputPath: 'static/', esModule: false } }] },
