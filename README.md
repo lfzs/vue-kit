@@ -17,7 +17,7 @@
 ├── src
 │   ├── app.vue
 │   ├── component # 组件目录
-│   ├── constant
+│   ├── constant # 常量
 │   ├── env.js
 │   ├── filter # 过滤器
 │   ├── helper
@@ -25,12 +25,21 @@
 │   ├── router.js # 路由
 │   ├── static
 │   ├── store
+│   │   ├── helper
+│   │   │   ├── Cache.js # 将需要缓存的 store 缓存到内存中
+│   │   │   └── List.js # 列表 store 可继承使用
+│   │   └── index.js
 │   ├── style
 │   ├── util
+│   │   └── fetch-action.js # 用来装饰 store 的 fetchData 方法，监听请求是否完成，并添加 tryFetchData 方法
 │   └── view
 ├── webpack.config.js
 └── yarn.lock
 ```
+
+## 命名规范
+
+- 文件/文件夹命名：小写、中划线分割、构造函数的文件首字母大写(eg: Item-detail-store.js)
 
 ## 注意事项
 
