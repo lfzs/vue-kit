@@ -7,7 +7,7 @@
     "start": "yarn && cross-env NODE_ENV=development webpack-dev-server",
     "staging": "yarn && cross-env NODE_ENV=staging webpack",
     "build": "yarn && cross-env NODE_ENV=production webpack",
-    "lint": "yarn && stylelint --max-warnings 0 'src/**/*.{vue,html,css,less,scss,sass}' && eslint --max-warnings 0 src/**/*.{js,vue}"
+    "lint": "yarn && stylelint --max-warnings 0 'src/**/*.{vue,html,css,less,scss,sass}' && eslint --max-warnings 0 'src/**/*.{js,vue}'"
   },
   "husky": {
     "hooks": {
