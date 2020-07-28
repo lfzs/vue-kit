@@ -7,4 +7,8 @@ import {
   Button,
 } from 'element-ui'
 
-Vue.component(Button.name, Button)
+const components = [
+  Button,
+]
+
+components.forEach(component => Vue.use(component))
