@@ -1,4 +1,4 @@
-# vue-kit Vue 项目脚手架
+# vue 项目脚手架
 
 ## 使用
 
@@ -39,8 +39,10 @@
 
 ## 命名规范
 
-- 文件/文件夹命名：小写、中划线分割、构造函数的文件首字母大写(eg: Item-detail-store.js)
+- 文件/文件夹命名：单数、小写、中划线分割、构造函数的文件首字母大写(如: Item-detail-store.js)
 
 ## 注意事项
 
-- 自动全局注册 src/component 文件下的组件(只匹配 base-*.vue 命名的组件，其他命名方式不会注册)。element-ui 组件按需加载, 需要手动在 src/component/element-ui 添加
+- 自动全局注册 src/component 文件下的组件(只匹配 base-*.vue 命名的组件，其他命名方式不会注册)
+
+- element-ui 组件按需加载, 需要手动在 src/component/element-ui 添加
