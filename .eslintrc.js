@@ -75,13 +75,13 @@ module.exports = {
     'template-curly-spacing': 2,
 
     /* 覆盖 eslint-plugin-vue 的规则 */
+    'vue/component-definition-name-casing': [2, 'kebab-case'],
     'vue/component-name-in-template-casing': [2, 'kebab-case'],
     'vue/html-self-closing': [2, { 'html': { 'void': 'always' } }],
-    'vue/max-attributes-per-line': 0,
-    'vue/name-property-casing': [2, 'kebab-case'],
+    'vue/max-attributes-per-line': [2, { 'singleline': 3 }],
     'vue/script-indent': [2, 2, { 'baseIndent': 1 }],
     'vue/singleline-html-element-content-newline': 0,
-    'vue/multiline-html-element-content-newline': [2, { 'allowEmptyLines': true }]
+    'vue/multiline-html-element-content-newline': [2, { 'allowEmptyLines': true }],
   },
 
   'overrides': [{

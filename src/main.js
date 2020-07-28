@@ -1,8 +1,8 @@
 import '@/component' // 组件全局注册
 import '@/component/element-ui' // element 组件全局注册
-import '@/helper/sentry'
+import '@/util/sentry'
 
-import axios from '@/helper/axios'
+import { axios } from '@/util'
 import dayjs from 'dayjs'
 import Big from 'big.js'
 window.axios = axios
