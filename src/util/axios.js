@@ -26,13 +26,13 @@ function handleResponse(res) {
 }
 
 async function handleResponseError(error) {
-  const { response: { data, status }, config: { errorTips = true } } = error
+  const { response: { data, status }, config: { showErrorToast = true } } = error // showErrorToast：请求出错是否需要 toast 提示
 
   if (status === 401) {
     authStore.setNext(location.href)
     await router.replace({ path: 'signin' })
   } else {
-    errorTips && Message.error({ message: getErrorMessage(data.error_message) })
+    showErrorToast && Message.error({ message: getErrorMessage(data.error_message) })
   }
 
   return Promise.reject(error.response)
