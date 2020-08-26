@@ -11,6 +11,7 @@
   import { authStore } from '@/store'
 
   export default {
+    name: 'signin',
     data() {
       return {
         mobile: '',
