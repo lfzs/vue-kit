@@ -16,7 +16,7 @@
     "commit-msg": "echo $HUSKY_GIT_PARAMS"
   },
   "lint-staged": {
-    "*.{vue,html,css,less,scss,sass}": "stylelint",
+    "src/**/*.{vue,html,css,less,scss,sass}": "stylelint",
     "*.{js,vue}": "eslint"
   },
   "dependencies": {
@@ -49,7 +49,7 @@
     "big.js": "^5.2.2",
     "clean-webpack-plugin": "^3.0.0",
     "cross-env": "^7.0.2",
-    "css-loader": "^4.2.2",
+    "css-loader": "^3.6.0",
     "eslint": "^7.7.0",
     "eslint-loader": "^4.0.2",
     "eslint-plugin-import": "^2.22.0",
