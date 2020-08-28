@@ -2,6 +2,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin')
 const { CleanWebpackPlugin } = require('clean-webpack-plugin')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin') // production 合并 style 到 .css 文件
 const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin') // production 压缩 .css 文件
+const CopyPlugin = require('copy-webpack-plugin')
 const FriendlyErrorsWebpackPlugin = require('friendly-errors-webpack-plugin')
 const VueLoaderPlugin = require('vue-loader/lib/plugin')
 const StyleLintPlugin = require('stylelint-webpack-plugin')
@@ -13,8 +14,8 @@ const resolve = dir => require('path').join(__dirname, dir)
 module.exports = {
   entry: './src/main.js',
   output: {
-    filename: 'bundle.[name].[hash:4].js',
-    chunkFilename: 'chunk.[name].[hash:4].js',
+    filename: 'js/bundle.[name].[hash:4].js',
+    chunkFilename: 'js/chunk.[name].[hash:4].js',
     publicPath: '/',
   },
   watch: isDev,
@@ -48,7 +49,8 @@ module.exports = {
     new VueLoaderPlugin(),
     new StyleLintPlugin({ files: '**/*.{vue,html,css,less,scss,sass}', context: './src', emitWarning: isDev, emitError: !isDev }),
     new HtmlWebpackPlugin({ template: './public/index.html', favicon: './public/favicon.ico' }),
-  ].concat(isDev ? [] : [new CleanWebpackPlugin(), new MiniCssExtractPlugin({ filename: '[name].[hash:4].css' }), new OptimizeCSSAssetsPlugin()]),
+    new CopyPlugin({ patterns: [{ from: './public/**/*', globOptions: { ignore: ['**/index.html', '**/favicon.ico'] }, noErrorOnMissing: true }] }),
+  ].concat(isDev ? [] : [new CleanWebpackPlugin(), new MiniCssExtractPlugin({ filename: 'css/[name].[hash:4].css' }), new OptimizeCSSAssetsPlugin()]),
   module: {
     rules: [
       { test: /\.(js|vue)$/, use: [{ loader: 'eslint-loader', options: { cache: true, emitWarning: isDev, emitError: !isDev } }], exclude: /node_modules/, enforce: 'pre' },
