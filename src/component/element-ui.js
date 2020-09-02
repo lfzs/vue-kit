@@ -5,10 +5,12 @@
 import Vue from 'vue'
 import {
   Button,
+  Divider,
 } from 'element-ui'
 
 const components = [
   Button,
+  Divider,
 ]
 
 components.forEach(component => Vue.use(component))

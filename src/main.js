@@ -1,4 +1,4 @@
-import '@/component' // 组件全局注册
+import '@/component/base-component' // 组件全局注册
 import '@/component/element-ui' // element 组件全局注册
 import '@/util/sentry'
 
