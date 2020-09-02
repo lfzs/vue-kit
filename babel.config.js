@@ -1,6 +1,5 @@
 module.exports = {
   presets: ['@babel/preset-env'],
-  comments: false,
   plugins: [
     'lodash',
     ['component', { 'libraryName': 'element-ui', 'styleLibraryName': '~theme' }],
