@@ -15,7 +15,7 @@ module.exports = {
   entry: './src/main.js',
   output: {
     filename: 'js/bundle.[name].[hash:4].js',
-    chunkFilename: 'js/chunk.[name].[hash:4].js',
+    chunkFilename: 'js/chunk.[name].[contenthash:4].js',
     publicPath: '/',
   },
   watch: isDev,
@@ -50,7 +50,7 @@ module.exports = {
     new StyleLintPlugin({ files: '**/*.{vue,html,css,less,scss,sass}', context: './src', emitWarning: isDev, emitError: !isDev }),
     new HtmlWebpackPlugin({ template: './public/index.html', favicon: './public/favicon.ico' }),
     new CopyPlugin({ patterns: [{ from: './public/**/*', globOptions: { ignore: ['**/index.html', '**/favicon.ico'] }, noErrorOnMissing: true }] }),
-  ].concat(isDev ? [] : [new CleanWebpackPlugin(), new MiniCssExtractPlugin({ filename: 'css/[name].[hash:4].css' }), new OptimizeCSSAssetsPlugin()]),
+  ].concat(isDev ? [] : [new CleanWebpackPlugin(), new MiniCssExtractPlugin({ filename: 'css/[name].[contenthash:4].css' }), new OptimizeCSSAssetsPlugin()]),
   module: {
     rules: [
       { test: /\.(js|vue)$/, use: [{ loader: 'eslint-loader', options: { cache: true, emitWarning: isDev, emitError: !isDev } }], exclude: /node_modules/, enforce: 'pre' },
@@ -62,8 +62,8 @@ module.exports = {
       { test: /\.less$/, use: [isDev ? 'vue-style-loader' : MiniCssExtractPlugin.loader, { loader: 'css-loader', options: { esModule: false } }, 'postcss-loader', { loader: 'less-loader', options: { additionalData: '@import "~@/style/less-var.less";' } }] },
       { test: /\.scss$/, use: [isDev ? 'vue-style-loader' : MiniCssExtractPlugin.loader, { loader: 'css-loader', options: { esModule: false } }, 'postcss-loader', { loader: 'sass-loader', options: { additionalData: '@import "~@/style/sass-var.scss";' } }] },
 
-      { test: /\.(png|jpg|gif|jpeg|svg)$/, use: [{ loader: 'file-loader', options: { name: 'static/[name].[hash:4].[ext]', esModule: false } }] },
-      { test: /\.(woff|woff2|eot|ttf|otf)$/, use: [{ loader: 'file-loader', options: { name: 'static/[name].[hash:4].[ext]', esModule: false } }] },
+      { test: /\.(png|jpg|gif|jpeg|svg)$/, use: [{ loader: 'file-loader', options: { name: 'static/[name].[contenthash:4].[ext]', esModule: false } }] },
+      { test: /\.(woff|woff2|eot|ttf|otf)$/, use: [{ loader: 'file-loader', options: { name: 'static/[name].[contenthash:4].[ext]', esModule: false } }] },
     ],
   },
   performance: {

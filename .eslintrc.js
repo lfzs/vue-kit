@@ -91,7 +91,5 @@ module.exports = {
 
   'globals': {
     'axios': true,
-    'dayjs': true,
-    'Big': true,
   },
 }

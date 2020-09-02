@@ -7,25 +7,25 @@ Vue.use(VueRouter)
 const routes = [
   {
     path: '/',
-    component: () => import('@/view/home'),
+    component: () => import(/* webpackChunkName: "home" */ '@/view/home'),
     meta: {
       title: '首页',
     },
   },
   {
     path: '/order',
-    component: () => import('@/view/order/layout'),
+    component: () => import(/* webpackChunkName: "order-layout" */ '@/view/order/layout'),
     children: [
       {
         path: '',
-        component: () => import('@/view/order/list'),
+        component: () => import(/* webpackChunkName: "order-list" */ '@/view/order/list'),
         meta: {
           title: '订单',
         },
       },
       {
         path: 'detail',
-        component: () => import('@/view/order/detail'),
+        component: () => import(/* webpackChunkName: "order-detail" */ '@/view/order/detail'),
         meta: {
           title: '订单信息',
         },
@@ -34,21 +34,21 @@ const routes = [
   },
   {
     path: '/mine',
-    component: () => import('@/view/mine'),
+    component: () => import(/* webpackChunkName: "mine" */ '@/view/mine'),
     meta: {
       title: '我的',
     },
   },
   {
     path: '/signin',
-    component: () => import('@/view/signin'),
+    component: () => import(/* webpackChunkName: "signin" */ '@/view/signin'),
     meta: {
       title: '登录',
     },
   },
   {
     path: '/404',
-    component: () => import('@/view/404'),
+    component: () => import(/* webpackChunkName: "404" */ '@/view/404'),
     meta: {
       title: '404',
     },

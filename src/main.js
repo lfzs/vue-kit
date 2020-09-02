@@ -3,11 +3,7 @@ import '@/component/element-ui' // element 组件全局注册
 import '@/util/sentry'
 
 import { axios } from '@/util'
-import dayjs from 'dayjs'
-import Big from 'big.js'
 window.axios = axios
-window.dayjs = dayjs
-window.Big = Big
 
 import Vue from 'vue'
 Vue.config.productionTip = false
