@@ -19,6 +19,10 @@ module.exports = {
     publicPath: '/',
   },
   watch: isDev,
+  watchOptions: {
+    ignored: /node_modules/,
+    poll: 500,
+  },
   mode: isDev ? 'development' : 'production',
   devServer: {
     port: '8080',
@@ -55,7 +59,7 @@ module.exports = {
     rules: [
       { test: /\.(js|vue)$/, use: [{ loader: 'eslint-loader', options: { cache: true, emitWarning: isDev, emitError: !isDev } }], exclude: /node_modules/, enforce: 'pre' },
       { test: /\.vue$/, use: 'vue-loader', exclude: /node_modules/ },
-      { test: /\.js$/, use: 'babel-loader', exclude: /node_modules/ },
+      { test: /\.js$/, use: 'babel-loader?cacheDirectory=true', exclude: /node_modules/ },
 
       // https://github.com/vuejs/vue-style-loader/issues/46 为什么需要设置 esModule: true
       { test: /\.css$/, use: [isDev ? 'vue-style-loader' : MiniCssExtractPlugin.loader, { loader: 'css-loader', options: { esModule: false } }, 'postcss-loader'] },
