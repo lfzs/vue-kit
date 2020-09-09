@@ -6,6 +6,7 @@ import { authStore } from '@/store'
 import { Message } from 'element-ui'
 
 axios.defaults.baseURL = `${host}/mgt/api/v1`
+axios.defaults.timeout = 60000
 axios.interceptors.request.use(handleRequest)
 axios.interceptors.response.use(handleResponse, handleResponseError)
 
