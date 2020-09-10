@@ -17,7 +17,8 @@
   },
   "lint-staged": {
     "src/**/*.{vue,html,css,less,scss,sass}": "stylelint",
-    "*.{js,vue}": "eslint"
+    "src/*.{js,vue}": "eslint",
+    "./*.js": "eslint"
   },
   "dependencies": {
     "@babel/runtime-corejs3": "^7.11.2",
