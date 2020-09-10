@@ -51,13 +51,13 @@ module.exports = {
     // new BundleAnalyzerPlugin(),
     new FriendlyErrorsWebpackPlugin(),
     new VueLoaderPlugin(),
-    new StyleLintPlugin({ files: '**/*.{vue,html,css,less,scss,sass}', context: './src', emitWarning: isDev, emitError: !isDev }),
+    new StyleLintPlugin({ files: '**/*.{vue,html,css,less,scss,sass}', context: resolve('src'), emitWarning: isDev, emitError: !isDev }),
     new HtmlWebpackPlugin({ template: './public/index.html', favicon: './public/favicon.ico' }),
     new CopyPlugin({ patterns: [{ from: './public/**/*', globOptions: { ignore: ['**/index.html', '**/favicon.ico'] }, noErrorOnMissing: true }] }),
   ].concat(isDev ? [] : [new CleanWebpackPlugin(), new MiniCssExtractPlugin({ filename: 'css/[name].[contenthash:4].css' }), new OptimizeCSSAssetsPlugin()]),
   module: {
     rules: [
-      { test: /\.(js|vue)$/, use: [{ loader: 'eslint-loader', options: { cache: true, emitWarning: isDev, emitError: !isDev } }], exclude: /node_modules/, enforce: 'pre' },
+      { test: /\.(js|vue)$/, use: [{ loader: 'eslint-loader', options: { cache: true, emitWarning: isDev, emitError: !isDev } }], exclude: /node_modules/, include: resolve('src'), enforce: 'pre' },
       { test: /\.vue$/, use: 'vue-loader', exclude: /node_modules/ },
       { test: /\.js$/, use: 'babel-loader?cacheDirectory=true', exclude: /node_modules/ },
 
