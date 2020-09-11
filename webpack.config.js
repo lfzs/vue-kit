@@ -53,7 +53,7 @@ module.exports = {
     new VueLoaderPlugin(),
     new StyleLintPlugin({ files: '**/*.{vue,html,css,less,scss,sass}', context: resolve('src'), emitWarning: isDev, emitError: !isDev }),
     new HtmlWebpackPlugin({ template: './public/index.html', favicon: './public/favicon.ico' }),
-    new CopyPlugin({ patterns: [{ from: './public/**/*', globOptions: { ignore: ['**/index.html', '**/favicon.ico'] }, noErrorOnMissing: true }] }),
+    new CopyPlugin({ patterns: [{ from: './public/!(index.html|favicon.ico)/**/*', noErrorOnMissing: true }] }),
   ].concat(isDev ? [] : [new CleanWebpackPlugin(), new MiniCssExtractPlugin({ filename: 'css/[name].[contenthash:4].css' }), new OptimizeCSSAssetsPlugin()]),
   module: {
     rules: [
