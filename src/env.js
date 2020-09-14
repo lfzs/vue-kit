@@ -10,4 +10,4 @@ const env = {
   },
 }
 
-export const { host } = env[process.env.NODE_ENV]
+export const { host } = env[process.env.TARGET_ENV]
