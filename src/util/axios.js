@@ -1,11 +1,11 @@
 import axios from 'axios'
 import { getErrorMessage } from '@/util'
-import { host } from '@/env'
+import { baseURL } from '@/env'
 import router from '@/router'
 import { authStore } from '@/store'
 import { Message } from 'element-ui'
 
-axios.defaults.baseURL = `${host}/mgt/api/v1`
+axios.defaults.baseURL = baseURL
 axios.defaults.timeout = 60000
 axios.interceptors.request.use(handleRequest)
 axios.interceptors.response.use(handleResponse, handleResponseError)
