@@ -9,7 +9,7 @@ const VueLoaderPlugin = require('vue-loader/lib/plugin')
 const StyleLintPlugin = require('stylelint-webpack-plugin')
 // const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin
 
-const isDev = process.env.TARGET_ENV === 'development'
+const isDev = process.env.APP_ENV === 'development'
 const resolve = dir => require('path').join(__dirname, dir)
 
 module.exports = {
@@ -51,7 +51,7 @@ module.exports = {
   plugins: [
     // new BundleAnalyzerPlugin(),
     new FriendlyErrorsWebpackPlugin(),
-    new webpack.EnvironmentPlugin(['TARGET_ENV']),
+    new webpack.EnvironmentPlugin(['APP_ENV']),
     new VueLoaderPlugin(),
     new StyleLintPlugin({ files: '**/*.{vue,html,css,less,scss,sass}', context: resolve('src'), emitWarning: isDev, emitError: !isDev }),
     new HtmlWebpackPlugin({ template: './public/index.html', favicon: './public/favicon.ico' }),
