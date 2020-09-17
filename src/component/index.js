@@ -1,2 +1,2 @@
-export countDown from './count-down'
-export listStatus from './list-status'
+export CountDown from './count-down'
+export ListStatus from './list-status'
