@@ -5,6 +5,7 @@
   "license": "MIT",
   "scripts": {
     "start": "yarn && cross-env APP_ENV=development webpack-dev-server --progress",
+    "dev": "yarn && cross-env APP_ENV=development webpack",
     "staging": "yarn && cross-env APP_ENV=staging webpack",
     "build": "yarn && cross-env APP_ENV=production webpack",
     "lint": "yarn && stylelint --max-warnings 0 'src/**/*.{vue,html,css,less,scss,sass}' && eslint --max-warnings 0 'src/**/*.{js,vue}'"
@@ -27,6 +28,7 @@
     "axios": "^0.20.0",
     "dayjs": "^1.8.36",
     "element-ui": "^2.13.2",
+    "es6-promise": "^4.2.8",
     "lodash": "^4.17.20",
     "normalize.css": "^8.0.1",
     "vue": "^2.6.12",
