@@ -1,7 +1,7 @@
 const webpack = require('webpack')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const { CleanWebpackPlugin } = require('clean-webpack-plugin')
-const MiniCssExtractPlugin = require('mini-css-extract-plugin') // production 合并 style 到 .css 文件
+const MiniCssExtractPlugin = require('mini-css-extract-plugin') // production 环境，提取行内的 style 到 .css 文件 利于缓存处理。dev 模式不提取为了热更新
 const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin') // production 压缩 .css 文件
 const CopyPlugin = require('copy-webpack-plugin')
 const FriendlyErrorsWebpackPlugin = require('friendly-errors-webpack-plugin')
@@ -19,13 +19,8 @@ module.exports = {
     chunkFilename: 'js/chunk.[name].[contenthash:4].js',
     publicPath: '/',
   },
-  watchOptions: {
-    ignored: /node_modules/,
-    poll: 500,
-  },
   mode: isDev ? 'development' : 'production',
   devServer: {
-    port: '8080',
     host: '0.0.0.0',
     disableHostCheck: true,
     clientLogLevel: 'silent',
@@ -34,6 +29,10 @@ module.exports = {
     quiet: true,
     hot: true,
     stats: 'errors-warnings',
+    watchOptions: {
+      ignored: /node_modules/,
+      poll: 500,
+    },
     // proxy: {
     //   '/mgt': {
     //     target: '',
@@ -42,7 +41,7 @@ module.exports = {
     //   },
     // },
   },
-  devtool: isDev && 'cheap-module-eval-source-map',
+  devtool: isDev && 'eval-cheap-source-map',
   resolve: {
     alias: { '@': resolve('src') },
     extensions: ['.js', '.json', '.vue'],

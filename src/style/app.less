@@ -18,6 +18,12 @@ body {
 *::before,
 *::after {
   box-sizing: inherit;
+  -webkit-tap-highlight-color: transparent;
+  -ms-overflow-style: none; // 隐藏 ie11 滚动条
+}
+
+::-webkit-scrollbar {
+  display: none; // 去除所有元素的滚动条
 }
 
 a { text-decoration: none; }
