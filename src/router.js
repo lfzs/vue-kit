@@ -7,6 +7,7 @@ Vue.use(VueRouter)
 const routes = [
   {
     path: '/',
+    alias: ['/index', '/index.html'],
     component: () => import(/* webpackChunkName: "home" */ '@/view/home'),
     meta: {
       title: '首页',
