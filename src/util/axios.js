@@ -36,7 +36,7 @@ async function handleResponseError(error) {
     showErrorToast && Message.error({ message: getErrorMessage(data.error_message) })
   }
 
-  return Promise.reject(error.response)
+  return Promise.reject(error)
 }
 
 export default axios
