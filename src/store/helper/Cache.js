@@ -5,15 +5,15 @@ const isRequired = () => {
 export default class {
   static caches = Object.create(null)
 
-  static findOrCreate(id = isRequired()) {
+  static findOrCreate(id = isRequired(), flag = '') {
     this._id = this._id || Math.random().toString(36).slice(2) // 向构造函数添加 _id 标志
 
-    const key = `${this._id}${id}`
+    const key = `${this._id}${id}${flag}`
     let value = this.caches[key]
 
     if (!value) {
       value = new this(id)
-      value.id = id
+      value.id = id // 将 id 挂载到对应实例
       this.caches[key] = value
     }
 
