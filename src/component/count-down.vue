@@ -1,5 +1,5 @@
 <template>
-  <span class="base-counter">{{ time }}</span>
+  <span class="count-down">{{ time }}</span>
 </template>
 
 <script>
@@ -62,7 +62,7 @@
 </script>
 
 <style>
-  .base-counter {
+  .count-down {
     font-family: Arial, Helvetica, sans-serif;
   }
 </style>
