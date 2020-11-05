@@ -7,6 +7,7 @@ const CopyPlugin = require('copy-webpack-plugin')
 const FriendlyErrorsWebpackPlugin = require('friendly-errors-webpack-plugin')
 const VueLoaderPlugin = require('vue-loader/lib/plugin')
 const StyleLintPlugin = require('stylelint-webpack-plugin')
+const ESLintPlugin = require('eslint-webpack-plugin')
 // const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin
 
 const isDev = process.env.APP_ENV === 'development'
@@ -50,12 +51,12 @@ module.exports = {
     new webpack.ProgressPlugin(),
     new VueLoaderPlugin(),
     new StyleLintPlugin({ files: '**/*.{vue,html,css,less,scss,sass}', context: resolve('src'), emitWarning: isDev, emitError: !isDev }),
+    new ESLintPlugin({ files: '**/*.{js,vue}', context: resolve('src'), emitWarning: isDev, emitError: !isDev }),
     new HtmlWebpackPlugin({ template: './public/index.html', favicon: './public/favicon.ico' }),
     new CopyPlugin({ patterns: [{ from: './public/!(index.html|favicon.ico)/**/*', noErrorOnMissing: true }] }),
   ].concat(isDev ? [new FriendlyErrorsWebpackPlugin(), new webpack.HotModuleReplacementPlugin()] : [new MiniCssExtractPlugin({ filename: 'css/[name].[contenthash:4].css', chunkFilename: 'css/chunk.[name].[contenthash:4].css' }), new OptimizeCSSAssetsPlugin()]),
   module: {
     rules: [
-      { test: /\.(js|vue)$/, use: [{ loader: 'eslint-loader', options: { cache: true, emitWarning: isDev, emitError: !isDev } }], exclude: /node_modules/, include: resolve('src'), enforce: 'pre' },
       { test: /\.vue$/, use: 'vue-loader', exclude: /node_modules/ },
       { test: /\.js$/, use: 'babel-loader?cacheDirectory=true', exclude: /node_modules/ },
 
