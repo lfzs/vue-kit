@@ -16,8 +16,8 @@ const resolve = dir => require('path').join(__dirname, dir)
 module.exports = {
   entry: './src/main.js',
   output: {
-    filename: 'js/bundle.[name].[hash:4].js',
-    chunkFilename: 'js/chunk.[name].[contenthash:4].js',
+    filename: `js/${isDev ? '[name]' : '[hash]'}.js`,
+    chunkFilename: `js/${isDev ? 'chunk.[name]' : '[contenthash]'}.js`,
     publicPath: '/',
   },
   mode: isDev ? 'development' : 'production',
@@ -54,17 +54,17 @@ module.exports = {
     new ESLintPlugin({ files: '**/*.{js,vue}', context: resolve('src'), emitWarning: isDev, emitError: !isDev }),
     new HtmlWebpackPlugin({ template: './public/index.html', favicon: './public/favicon.ico' }),
     new CopyPlugin({ patterns: [{ from: './public/!(index.html|favicon.ico)/**/*', noErrorOnMissing: true }] }),
-  ].concat(isDev ? [new FriendlyErrorsWebpackPlugin(), new webpack.HotModuleReplacementPlugin()] : [new MiniCssExtractPlugin({ filename: 'css/[name].[contenthash:4].css', chunkFilename: 'css/chunk.[name].[contenthash:4].css' }), new OptimizeCSSAssetsPlugin()]),
+  ].concat(isDev ? [new FriendlyErrorsWebpackPlugin(), new webpack.HotModuleReplacementPlugin()] : [new MiniCssExtractPlugin({ filename: 'css/[contenthash].css', chunkFilename: 'css/[contenthash].css' }), new OptimizeCSSAssetsPlugin()]),
   module: {
     rules: [
       { test: /\.vue$/, use: 'vue-loader', exclude: /node_modules/ },
       { test: /\.js$/, use: 'babel-loader?cacheDirectory=true', exclude: /node_modules/ },
 
-      { test: /\.css$/, use: [isDev ? 'style-loader' : { loader: MiniCssExtractPlugin.loader, options: { esModule: false } }, 'css-loader', 'postcss-loader'] },
-      { test: /\.less$/, use: [isDev ? 'style-loader' : { loader: MiniCssExtractPlugin.loader, options: { esModule: false } }, 'css-loader', 'postcss-loader', { loader: 'less-loader', options: { additionalData: '@import "~@/style/less-var.less";' } }] },
-      { test: /\.scss$/, use: [isDev ? 'style-loader' : { loader: MiniCssExtractPlugin.loader, options: { esModule: false } }, 'css-loader', 'postcss-loader', { loader: 'sass-loader', options: { additionalData: '@import "~@/style/sass-var.scss";' } }] },
+      { test: /\.css$/, use: [isDev ? 'style-loader' : MiniCssExtractPlugin.loader, 'css-loader', 'postcss-loader'] },
+      { test: /\.less$/, use: [isDev ? 'style-loader' : MiniCssExtractPlugin.loader, 'css-loader', 'postcss-loader', { loader: 'less-loader', options: { additionalData: '@import "~@/style/less-var.less";' } }] },
+      { test: /\.scss$/, use: [isDev ? 'style-loader' : MiniCssExtractPlugin.loader, 'css-loader', 'postcss-loader', { loader: 'sass-loader', options: { additionalData: '@import "~@/style/sass-var.scss";' } }] },
 
-      { test: /\.(png|jpg|gif|jpeg|svg|woff|woff2|eot|ttf|otf)$/, use: [{ loader: 'file-loader', options: { name: 'static/[name].[contenthash:4].[ext]', esModule: false } }] },
+      { test: /\.(png|jpg|gif|jpeg|svg|woff|woff2|eot|ttf|otf)$/, use: [{ loader: 'file-loader', options: { name: 'static/[contenthash].[ext]', esModule: false } }] },
     ],
   },
   performance: {
