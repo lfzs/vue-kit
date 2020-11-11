@@ -2,7 +2,6 @@ const webpack = require('webpack')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const { CleanWebpackPlugin } = require('clean-webpack-plugin')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin') // production 环境，提取行内的 style 到 .css 文件 利于缓存处理。dev 模式不提取为了热更新
-const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin') // production 压缩 .css 文件
 const CopyPlugin = require('copy-webpack-plugin')
 const FriendlyErrorsWebpackPlugin = require('friendly-errors-webpack-plugin')
 const VueLoaderPlugin = require('vue-loader/lib/plugin')
@@ -54,7 +53,7 @@ module.exports = {
     new ESLintPlugin({ files: '**/*.{js,vue}', context: resolve('src'), emitWarning: isDev, emitError: !isDev }),
     new HtmlWebpackPlugin({ template: './public/index.html', favicon: './public/favicon.ico' }),
     new CopyPlugin({ patterns: [{ from: './public/!(index.html|favicon.ico)/**/*', noErrorOnMissing: true }] }),
-  ].concat(isDev ? [new FriendlyErrorsWebpackPlugin(), new webpack.HotModuleReplacementPlugin()] : [new MiniCssExtractPlugin({ filename: 'css/[contenthash].css', chunkFilename: 'css/[contenthash].css' }), new OptimizeCSSAssetsPlugin()]),
+  ].concat(isDev ? [new FriendlyErrorsWebpackPlugin(), new webpack.HotModuleReplacementPlugin()] : [new MiniCssExtractPlugin({ filename: 'css/[contenthash].css', chunkFilename: 'css/[contenthash].css' })]),
   module: {
     rules: [
       { test: /\.vue$/, use: 'vue-loader', exclude: /node_modules/ },
