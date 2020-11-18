@@ -15,15 +15,8 @@ function handleRequest(request) {
 }
 
 function handleResponse(res) {
-  const { headers = {} } = res
-  if (headers['x-page']) {
-    res.meta = {
-      per_page: +headers['x-per-page'][0],
-      page: +headers['x-page'][0],
-      total: +headers['x-total'][0],
-    }
-  }
-  return res
+  const { data } = res
+  return data
 }
 
 async function handleResponseError(error) {
@@ -33,10 +26,10 @@ async function handleResponseError(error) {
     authStore.setNext(location.href)
     await router.replace({ path: 'signin' })
   } else {
-    showErrorToast && Message.error({ message: getErrorMessage(data.error_message) })
+    showErrorToast && Message.error({ message: getErrorMessage(data) })
   }
 
-  return Promise.reject(error)
+  return Promise.reject(data)
 }
 
 export default axios
