@@ -14,9 +14,8 @@ function handleRequest(request) {
   return request
 }
 
-function handleResponse(res) {
-  const { data } = res
-  return data
+function handleResponse(response) {
+  return response.data
 }
 
 async function handleResponseError(error) {

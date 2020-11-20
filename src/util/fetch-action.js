@@ -9,8 +9,7 @@ export default function(target, name, descriptor) { // target 为类的原型对
     try {
       const res = await value.apply(this, args)
       this._state = 'done'
-      this.response = res // 返回值挂载到 this.response 上
-      return this.data = res.data ?? this.data // 注意: this.data 指向 res.data
+      return this.data = res.data ?? res // 注意: res.data 有值就拿 data 否则拿 res
     } catch (error) {
       this._state = 'error'
       throw error
