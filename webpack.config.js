@@ -17,7 +17,7 @@ module.exports = {
   output: {
     filename: `js/${isDev ? '[name]' : '[hash]'}.js`,
     chunkFilename: `js/${isDev ? 'chunk.[name]' : '[contenthash]'}.js`,
-    publicPath: '/',
+    publicPath: process.env.BASE_URL || '/',
   },
   mode: isDev ? 'development' : 'production',
   devServer: {
@@ -29,6 +29,7 @@ module.exports = {
     historyApiFallback: true,
     quiet: true,
     hot: true,
+    publicPath: '/',
     stats: 'errors-warnings',
     // proxy: {
     //   '/mgt': {
@@ -46,7 +47,7 @@ module.exports = {
   plugins: [
     // new BundleAnalyzerPlugin(),
     new CleanWebpackPlugin(),
-    new webpack.EnvironmentPlugin(['APP_ENV']),
+    new webpack.EnvironmentPlugin(['APP_ENV', 'BASE_URL']),
     new webpack.ProgressPlugin(),
     new VueLoaderPlugin(),
     new StyleLintPlugin({ files: '**/*.{vue,html,css,less,scss,sass}', context: resolve('src'), emitWarning: isDev, emitError: !isDev }),
