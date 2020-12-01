@@ -1,5 +1,10 @@
 <template>
-  <router-view />
+  <div class="container">
+    <keep-alive>
+      <router-view v-if="$get($route, 'meta.keepAlive')" />
+    </keep-alive>
+    <router-view v-if="!$get($route, 'meta.keepAlive')" />
+  </div>
 </template>
 
 <script>
