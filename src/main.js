@@ -16,9 +16,6 @@ Vue.prototype.$get = _.get
 import { formatTime } from '@/filter'
 Vue.filter('formatTime', formatTime)
 
-import VueLazyload from 'vue-lazyload'
-Vue.use(VueLazyload)
-
 import router from '@/router'
 import app from '@/app'
 new Vue({ el: '#app', router, render: h => h(app) })
