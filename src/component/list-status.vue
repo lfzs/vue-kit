@@ -8,6 +8,7 @@
 
 <script>
   export default {
+    name: 'list-status',
     props: {
       listStatus: {
         type: Object,
