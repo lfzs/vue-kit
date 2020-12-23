@@ -16,6 +16,10 @@ Vue.prototype.$get = _.get
 import { formatTime } from '@/filter'
 Vue.filter('formatTime', formatTime)
 
+// 根元素添加 --vh 变量
+document.documentElement.style.setProperty('--vh', `${window.innerHeight * 0.01}px`)
+window.addEventListener('resize', () => document.documentElement.style.setProperty('--vh', `${window.innerHeight * 0.01}px`))
+
 import router from '@/router'
 import app from '@/app'
 new Vue({ name: 'app', el: '#app', router, render: h => h(app) })

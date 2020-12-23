@@ -12,7 +12,7 @@
   }
 </script>
 
-<style lang="less" scop>
+<style lang="less" scoped>
   div {
     border: 1px solid blue;
   }
