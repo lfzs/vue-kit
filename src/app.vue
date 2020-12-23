@@ -1,5 +1,5 @@
 <template>
-  <div class="container">
+  <div class="app">
     <keep-alive>
       <router-view v-if="$get($route, 'meta.keepAlive')" />
     </keep-alive>
