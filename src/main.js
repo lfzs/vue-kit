@@ -4,6 +4,10 @@ import '@/component/base-component' // 组件全局注册
 import '@/component/element-ui' // element 组件全局注册
 import '@/util/sentry'
 
+// 全局样式
+import 'normalize.css'
+import '@/style/app.less'
+
 import { axios } from '@/util'
 window.axios = axios
 
