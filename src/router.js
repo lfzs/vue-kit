@@ -8,7 +8,6 @@ const routes = [
     component: () => import(/* webpackChunkName: "home" */ '@/view/home'),
     meta: {
       title: '首页',
-      keepAlive: true
     },
   },
   {

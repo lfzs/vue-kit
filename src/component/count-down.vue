@@ -20,6 +20,8 @@
       },
     },
 
+    emits: ['end'],
+
     data() {
       return {
         second: 0,
@@ -30,7 +32,7 @@
       this.start()
     },
 
-    beforeDestroy() {
+    beforeUnmount() {
       clearInterval(this.timer)
     },
 

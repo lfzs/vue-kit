@@ -47,6 +47,7 @@ module.exports = {
   plugins: [
     // new BundleAnalyzerPlugin(),
     new CleanWebpackPlugin(),
+    new webpack.DefinePlugin({ __VUE_OPTIONS_API__: false, __VUE_PROD_DEVTOOLS__: false }),
     new webpack.EnvironmentPlugin(['APP_ENV', 'BASE_URL']),
     new webpack.ProgressPlugin(),
     new VueLoaderPlugin(),
