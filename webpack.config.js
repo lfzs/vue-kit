@@ -32,7 +32,7 @@ module.exports = {
     publicPath: '/',
     stats: 'errors-warnings',
     // proxy: {
-    //   '/mgt': {
+    //   '/api': {
     //     target: '',
     //     changeOrigin: true,
     //     secure: false,

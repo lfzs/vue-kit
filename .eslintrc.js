@@ -95,7 +95,6 @@ module.exports = {
     'vue/no-irregular-whitespace': 2,
     'vue/no-lone-template': 2,
     'vue/no-reserved-component-names': 2,
-    'vue/no-unused-properties': 2,
     'vue/no-useless-concat': 2,
     'vue/no-useless-mustaches': 2,
     'vue/no-useless-v-bind': 2,
