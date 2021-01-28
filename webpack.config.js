@@ -4,7 +4,7 @@ const { CleanWebpackPlugin } = require('clean-webpack-plugin')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin') // production 环境，提取行内的 style 到 .css 文件 利于缓存处理。dev 模式不提取为了热更新
 const CopyPlugin = require('copy-webpack-plugin')
 const FriendlyErrorsWebpackPlugin = require('friendly-errors-webpack-plugin')
-const VueLoaderPlugin = require('vue-loader/lib/plugin')
+const { VueLoaderPlugin } = require('vue-loader')
 const StyleLintPlugin = require('stylelint-webpack-plugin')
 const ESLintPlugin = require('eslint-webpack-plugin')
 // const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin
@@ -32,7 +32,7 @@ module.exports = {
     publicPath: '/',
     stats: 'errors-warnings',
     // proxy: {
-    //   '/mgt': {
+    //   '/api': {
     //     target: '',
     //     changeOrigin: true,
     //     secure: false,
@@ -47,6 +47,7 @@ module.exports = {
   plugins: [
     // new BundleAnalyzerPlugin(),
     new CleanWebpackPlugin(),
+    new webpack.DefinePlugin({ __VUE_OPTIONS_API__: false, __VUE_PROD_DEVTOOLS__: false }),
     new webpack.EnvironmentPlugin(['APP_ENV', 'BASE_URL']),
     new webpack.ProgressPlugin(),
     new VueLoaderPlugin(),

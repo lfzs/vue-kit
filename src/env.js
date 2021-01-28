@@ -11,4 +11,4 @@ const env = {
 }
 
 export const { host } = env[process.env.APP_ENV]
-export const baseURL = `${host}/mgt/api/v1`
+export const baseURL = `${host}/api`

@@ -3,7 +3,7 @@ import { getErrorMessage } from '@/util'
 import { baseURL } from '@/env'
 import router from '@/router'
 import { authStore } from '@/store'
-import { Message } from 'element-ui'
+import { ElMessage } from 'element-plus'
 
 axios.defaults.baseURL = baseURL
 axios.defaults.timeout = 60000
@@ -25,7 +25,7 @@ async function handleResponseError(error) {
     authStore.setNext(location.href)
     await router.replace({ path: 'signin' })
   } else {
-    showErrorToast && Message.error({ message: getErrorMessage(data) })
+    showErrorToast && ElMessage.error(getErrorMessage(data))
   }
 
   return Promise.reject(data)

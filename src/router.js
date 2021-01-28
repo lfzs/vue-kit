@@ -1,8 +1,5 @@
-import Vue from 'vue'
-import VueRouter from 'vue-router'
+import { createRouter, createWebHistory } from 'vue-router'
 import { APP_NAME } from '@/constant'
-
-Vue.use(VueRouter)
 
 const routes = [
   {
@@ -11,7 +8,6 @@ const routes = [
     component: () => import(/* webpackChunkName: "home" */ '@/view/home'),
     meta: {
       title: '首页',
-      keepAlive: true
     },
   },
   {
@@ -55,13 +51,11 @@ const routes = [
       title: '404',
     },
   },
-  { path: '*', redirect: '/404' },
 ]
 
-const router = new VueRouter({
-  mode: 'history',
-  base: process.env.BASE_URL || '/',
+const router = createRouter({
   routes,
+  history: createWebHistory(process.env.BASE_URL || '/'),
 })
 
 router.beforeEach((to, from, next) => {
