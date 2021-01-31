@@ -3,7 +3,6 @@ const HtmlWebpackPlugin = require('html-webpack-plugin')
 const { CleanWebpackPlugin } = require('clean-webpack-plugin')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin') // production 环境，提取行内的 style 到 .css 文件 利于缓存处理。dev 模式不提取为了热更新
 const CopyPlugin = require('copy-webpack-plugin')
-const FriendlyErrorsWebpackPlugin = require('friendly-errors-webpack-plugin')
 const { VueLoaderPlugin } = require('vue-loader')
 const StyleLintPlugin = require('stylelint-webpack-plugin')
 const ESLintPlugin = require('eslint-webpack-plugin')
@@ -15,22 +14,19 @@ const resolve = dir => require('path').join(__dirname, dir)
 module.exports = {
   entry: './src/main.js',
   output: {
-    filename: `js/${isDev ? '[name]' : '[hash]'}.js`,
+    path: resolve('dist'),
+    filename: `js/${isDev ? '[name]' : '[fullhash]'}.js`,
     chunkFilename: `js/${isDev ? 'chunk.[name]' : '[contenthash]'}.js`,
     publicPath: process.env.BASE_URL || '/',
   },
   mode: isDev ? 'development' : 'production',
   devServer: {
     host: '0.0.0.0',
-    // useLocalIp: true,
-    disableHostCheck: true,
-    clientLogLevel: 'silent',
+    port: 8080,
+    useLocalIp: true,
     open: true,
-    historyApiFallback: true,
-    quiet: true,
-    hot: true,
-    publicPath: '/',
-    stats: 'errors-warnings',
+    client: { logging: 'none' },
+    static: { watch: false },
     // proxy: {
     //   '/api': {
     //     target: '',
@@ -55,7 +51,7 @@ module.exports = {
     new ESLintPlugin({ files: '**/*.{js,vue}', context: resolve('src'), emitWarning: isDev, emitError: !isDev }),
     new HtmlWebpackPlugin({ template: './public/index.html', favicon: './public/favicon.ico' }),
     new CopyPlugin({ patterns: [{ from: './public/!(index.html|favicon.ico)/**/*', noErrorOnMissing: true }] }),
-  ].concat(isDev ? [new FriendlyErrorsWebpackPlugin(), new webpack.HotModuleReplacementPlugin()] : [new MiniCssExtractPlugin({ filename: 'css/[contenthash].css', chunkFilename: 'css/[contenthash].css' })]),
+  ].concat(isDev ? [new webpack.HotModuleReplacementPlugin()] : [new MiniCssExtractPlugin({ filename: 'css/[contenthash].css', chunkFilename: 'css/[contenthash].css' })]),
   module: {
     rules: [
       { test: /\.vue$/, use: 'vue-loader', exclude: /node_modules/ },
@@ -68,6 +64,7 @@ module.exports = {
       { test: /\.(png|jpg|gif|jpeg|svg|woff|woff2|eot|ttf|otf)$/, use: [{ loader: 'file-loader', options: { name: 'static/[contenthash].[ext]', esModule: false } }] },
     ],
   },
+  stats: 'info',
   performance: {
     hints: false,
   },
