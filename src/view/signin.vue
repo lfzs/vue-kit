@@ -1,8 +1,8 @@
 <template>
   <div>
     <h1>登陆</h1>
-    <input v-model="mobile" />
-    <input v-model="password" />
+    <input v-model="mobile">
+    <input v-model="password">
     <el-button @click="signin">登陆</el-button>
   </div>
 </template>

@@ -89,7 +89,6 @@ module.exports = {
     'vue/dot-notation': 2,
     'vue/eqeqeq': 2,
     'vue/func-call-spacing': 2,
-    'vue/html-self-closing': [2, { 'html': { 'void': 'always' } }],
     'vue/keyword-spacing': 2,
     'vue/key-spacing': 2,
     'vue/max-attributes-per-line': [2, { 'singleline': 5 }],
