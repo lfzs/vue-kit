@@ -7,7 +7,7 @@
     "dev": "yarn && cross-env APP_ENV=development BASE_URL=/ webpack",
     "staging": "yarn && cross-env APP_ENV=staging BASE_URL=/ webpack",
     "build": "yarn && cross-env APP_ENV=production BASE_URL=/ webpack",
-    "lint": "yarn && stylelint --max-warnings 0 \"src/**/*.{vue,html,css,less,scss,sass}\" && eslint --max-warnings 0 \"src/**/*.{js,vue}\""
+    "lint": "yarn && stylelint --max-warnings 0 \"./**/*.{vue,html,css,less,scss,sass}\" && eslint --max-warnings 0 \"./**/*.{js,vue}\""
   },
   "husky": {
     "hooks": {
@@ -16,9 +16,8 @@
     "commit-msg": "echo $HUSKY_GIT_PARAMS"
   },
   "lint-staged": {
-    "src/**/*.{vue,html,css,less,scss,sass}": "stylelint --max-warnings 0",
-    "src/**/*.{js,vue}": "eslint --max-warnings 0",
-    "./*.js": "eslint --max-warnings 0"
+    "*.{vue,html,css,less,scss,sass}": "stylelint --max-warnings 0",
+    "*.{js,vue}": "eslint --max-warnings 0"
   },
   "dependencies": {
     "@babel/runtime-corejs3": "^7.12.5",

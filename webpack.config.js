@@ -22,9 +22,8 @@ module.exports = {
   mode: isDev ? 'development' : 'production',
   devServer: {
     host: '0.0.0.0',
-    port: 8080,
     useLocalIp: true,
-    open: true,
+    // open: true,
     client: { logging: 'none' },
     static: { watch: false },
     // proxy: {
