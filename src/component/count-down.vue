@@ -3,7 +3,7 @@
 </template>
 
 <script>
-  import { computed, ref, toRefs, onBeforeUnmount } from 'vue'
+  import { computed, ref, onBeforeUnmount } from 'vue'
   import { formatSecond } from '@/util'
 
   export default {
@@ -26,10 +26,9 @@
     emits: ['finish'],
 
     setup(props, { emit }) {
-      const { now, end, unit } = toRefs(props)
       let timer = null
 
-      const s = Math.floor((new Date(end.value) - now.value) / 1000)
+      const s = Math.floor((new Date(props.end) - props.now) / 1000)
       const second = ref(s > 0 ? s : 0)
       if (second.value > 0) {
         const fn = () => {
@@ -45,7 +44,7 @@
         timer = setInterval(fn, 1000)
       }
 
-      const time = computed(() => formatSecond(second.value, unit.value))
+      const time = computed(() => formatSecond(second.value, props.unit))
       onBeforeUnmount(() => clearInterval(timer))
       return { time }
     }

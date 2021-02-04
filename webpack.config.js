@@ -24,6 +24,8 @@ module.exports = {
     host: '0.0.0.0',
     useLocalIp: true,
     // open: true,
+    // openPage: process.env.BASE_URL || '/', // https://github.com/webpack/webpack-dev-server/pull/2582
+    historyApiFallback: true, // 路由全部重定向到首页
     client: { logging: 'none' },
     static: { watch: false },
     // proxy: {
