@@ -2,7 +2,8 @@ import 'es6-promise/auto' // 一些第三方包会依赖 Promise 环境
 
 // 全局样式
 import 'normalize.css'
-import '@/style/app.less'
+import '@/style/reset.less'
+import '@/style/var-class.less'
 
 // 根元素添加 --vh 变量
 document.documentElement.style.setProperty('--vh', `${window.innerHeight * 0.01}px`)
@@ -20,7 +21,7 @@ app.config.globalProperties.$get = _.get // 挂载全局变量
 
 import elementPlus from '@/component/element-plus'
 elementPlus(app) // element 组件全局注册
-import '@/style/element-var.scss' // 覆盖样式
+import '@/style/var-element.scss' // 覆盖样式
 
 import baseComponent from '@/component/base-component'
 baseComponent(app) // base-* 组件全局注册
