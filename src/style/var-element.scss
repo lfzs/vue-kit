@@ -1,7 +1,6 @@
-/* theme color */
-$--color-primary: teal;
+// https://element-plus.org/#/en-US/component/custom-theme
 
-/* icon font path, required */
+$--color-primary: teal;
 $--font-path: 'element-plus/lib/theme-chalk/fonts';
 
 @import 'element-plus/packages/theme-chalk/src/index';
