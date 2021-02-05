@@ -1,55 +1,29 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import { APP_NAME } from '@/constant'
+import { h } from 'vue'
 
 const routes = [
   {
     path: '/',
     alias: ['/index', '/index.html'],
-    component: () => import(/* webpackChunkName: "home" */ '@/view/home'),
+    component: () => import('@/view/home'),
     meta: {
-      title: '首页',
+      title: 'home',
     },
   },
   {
-    path: '/order',
-    component: () => import('@/view/order/layout'),
+    path: '/item/:id',
+    component: () => import('@/view/item'),
     children: [
       {
         path: '',
-        component: () => import('@/view/order/list'),
-        meta: {
-          title: '订单',
-        },
+        component: { render: () => h('h3', 'item content') },
       },
       {
-        path: 'detail',
-        component: () => import('@/view/order/detail'),
-        meta: {
-          title: '订单信息',
-        },
+        path: 'status',
+        component: { render: () => h('h3', 'status content') },
       },
     ],
-  },
-  {
-    path: '/mine',
-    component: () => import('@/view/mine'),
-    meta: {
-      title: '我的',
-    },
-  },
-  {
-    path: '/signin',
-    component: () => import('@/view/signin'),
-    meta: {
-      title: '登录',
-    },
-  },
-  {
-    path: '/404',
-    component: () => import('@/view/404'),
-    meta: {
-      title: '404',
-    },
   },
 ]
 
