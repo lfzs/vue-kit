@@ -1,11 +1,11 @@
 import axios from 'axios'
 import { getErrorMessage } from '@/util'
-import { baseURL } from '@/env'
+import { HOST } from '@/constant'
 import router from '@/router'
 import { authStore } from '@/store'
 import { ElMessage } from 'element-plus'
 
-axios.defaults.baseURL = baseURL
+axios.defaults.baseURL = `${HOST}/api`
 axios.defaults.timeout = 60000
 axios.interceptors.request.use(handleRequest)
 axios.interceptors.response.use(handleResponse, handleResponseError)

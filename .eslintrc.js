@@ -8,21 +8,20 @@ module.exports = {
     'plugin:vue/vue3-strongly-recommended',
   ],
 
+  'env': {
+    'es2021': true, // will automatically sets the ecmaVersion parser option to 2021.
+    'browser': true,
+    'node': true,
+  },
+
   'parser': 'vue-eslint-parser',
   'parserOptions': {
     'parser': '@babel/eslint-parser',
-    'ecmaVersion': 2021,
     'sourceType': 'module',
     'ecmaFeatures': {
       'legacyDecorators': true,
       'jsx': true,
     },
-  },
-
-  'env': {
-    'es2021': true,
-    'browser': true,
-    'node': true,
   },
 
   'rules': {
