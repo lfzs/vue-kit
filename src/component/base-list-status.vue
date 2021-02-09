@@ -1,8 +1,8 @@
 <template>
   <div class="base-list-status">
-    <div class="flex-center" v-if="listStatus.isEmpty">{{ emptyText }}</div>
-    <el-divider v-else-if="listStatus.isNoMore">{{ reachBottomText }}</el-divider>
-    <div class="flex-center loading" v-else><i class="el-icon-loading" />{{ loadingText }}</div>
+    <div class="flex-center" v-if="status.isEmpty">{{ emptyText }}</div>
+    <div class="flex-center" v-else-if="status.isNoMore">{{ reachBottomText }}</div>
+    <div class="flex-center" v-else><i class="el-icon-loading" />{{ loadingText }}</div>
   </div>
 </template>
 
@@ -10,7 +10,7 @@
   export default {
     name: 'list-status',
     props: {
-      listStatus: {
+      status: {
         type: Object,
         required: true,
       },
@@ -30,22 +30,14 @@
   }
 </script>
 
-<style lang="less" scoped>
+<style lang="less">
   .base-list-status {
     color: @color2;
     padding: 30px 0;
 
-    .el-divider__text {
-      background-color: @bg;
-      color: @color2;
-      font-weight: normal;
-    }
-
-    .loading {
-      i {
-        font-size: 17px;
-        margin-right: 10px;
-      }
+    i {
+      font-size: 18px;
+      margin-right: 10px;
     }
   }
 

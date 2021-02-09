@@ -77,7 +77,7 @@ export default class extends Cache {
     }
   }
 
-  get listStatus() {
+  get status() {
     return {
       isNoMore: this.state === 'done' && this.data.length >= this.meta.total,
       isLoading: this.state === 'pending',

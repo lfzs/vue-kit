@@ -11,6 +11,6 @@ export default new class {
   }
 
   signin({ mobile = '', password = '' }) {
-    return axios.post('sessions/login_with_password', { mobile, password })
+    return axios.post('login', { mobile, password })
   }
 }
