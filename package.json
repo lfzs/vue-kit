@@ -6,7 +6,7 @@
     "dev": "yarn && cross-env APP_ENV=development BASE_URL=/ webpack",
     "staging": "yarn && cross-env APP_ENV=staging BASE_URL=/ webpack",
     "build": "yarn && cross-env APP_ENV=production BASE_URL=/ webpack",
-    "lint": "yarn && stylelint --max-warnings 0 \"./**/*.{vue,html,css,less,scss,sass}\" && eslint --max-warnings 0 \"./**/*.{js,vue}\""
+    "lint": "yarn && stylelint --max-warnings 0 \"src/**/*.{vue,html,css,less,scss,sass}\" && eslint --max-warnings 0 \"src/**/*.{js,vue}\""
   },
   "lint-staged": {
     "*.{vue,html,css,less,scss,sass}": "stylelint --max-warnings 0",
