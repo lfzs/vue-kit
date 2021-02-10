@@ -17,6 +17,7 @@ module.exports = {
     path: resolve('dist'),
     filename: `js/${isDev ? '[name]' : '[fullhash]'}.js`,
     chunkFilename: `js/${isDev ? 'chunk.[name]' : '[contenthash]'}.js`,
+    assetModuleFilename: 'static/[hash][ext][query]',
     publicPath: process.env.BASE_URL || '/',
   },
   mode: isDev ? 'development' : 'production',
@@ -56,13 +57,13 @@ module.exports = {
   module: {
     rules: [
       { test: /\.vue$/, use: 'vue-loader', exclude: /node_modules/ },
-      { test: /\.js$/, use: 'babel-loader?cacheDirectory=true', exclude: /node_modules/ },
+      { test: /\.js$/, use: 'babel-loader', exclude: /node_modules/ },
 
       { test: /\.css$/, use: [isDev ? 'style-loader' : MiniCssExtractPlugin.loader, 'css-loader', 'postcss-loader'] },
       { test: /\.less$/, use: [isDev ? 'style-loader' : MiniCssExtractPlugin.loader, 'css-loader', 'postcss-loader', { loader: 'less-loader', options: { additionalData: '@import "@/style/var-less.less";' } }] },
       { test: /\.scss$/, use: [isDev ? 'style-loader' : MiniCssExtractPlugin.loader, 'css-loader', 'postcss-loader', { loader: 'sass-loader', options: { additionalData: '@import "@/style/var-sass.scss";' } }] },
 
-      { test: /\.(png|jpg|gif|jpeg|svg|woff|woff2|eot|ttf|otf)$/, use: [{ loader: 'file-loader', options: { name: 'static/[contenthash].[ext]', esModule: false } }] },
+      { test: /\.(png|jpg|gif|jpeg|svg|woff|woff2|eot|ttf|otf)$/, type: 'asset/resource' },
     ],
   },
   stats: 'info',
