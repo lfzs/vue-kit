@@ -1,6 +1,6 @@
 <template>
   <div class="flex-center">
-    <img src="@/static/logo.png" />
+    <img src="@/static/logo.png">
   </div>
   <h2 class="flex-center">{{ desc }}</h2>
 </template>
@@ -11,7 +11,7 @@
 
     setup() {
       return {
-        desc: 'Hello Vue'
+        desc: 'Hello Vue!'
       }
     },
   }
