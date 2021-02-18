@@ -49,8 +49,8 @@ module.exports = {
     new webpack.EnvironmentPlugin(['APP_ENV', 'BASE_URL']),
     new webpack.ProgressPlugin(),
     new VueLoaderPlugin(),
-    new StyleLintPlugin({ files: '**/*.{vue,html,css,less,scss,sass}', context: resolve('src'), emitWarning: isDev, emitError: !isDev }),
-    new ESLintPlugin({ files: '**/*.{js,vue}', context: resolve('src'), emitWarning: isDev, emitError: !isDev }),
+    new StyleLintPlugin({ files: '**/*.{vue,html,css,less,scss,sass}', context: resolve('src'), emitWarning: true, emitError: true, failOnError: !isDev, failOnWarning: !isDev }),
+    new ESLintPlugin({ extensions: ['js', 'vue'], context: resolve('src'), failOnWarning: true }),
     new HtmlWebpackPlugin({ template: './public/index.html', favicon: './public/favicon.ico' }),
     new CopyPlugin({ patterns: [{ from: './public/!(index.html|favicon.ico)/**/*', noErrorOnMissing: true }] }),
   ].concat(isDev ? [new webpack.HotModuleReplacementPlugin()] : [new MiniCssExtractPlugin({ filename: 'css/[contenthash].css', chunkFilename: 'css/[contenthash].css' })]),
@@ -67,6 +67,9 @@ module.exports = {
     ],
   },
   stats: 'info',
+  experiments: {
+    topLevelAwait: true,
+  },
   performance: {
     hints: false,
   },
