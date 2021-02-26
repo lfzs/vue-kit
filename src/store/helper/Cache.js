@@ -6,9 +6,9 @@ export default class {
   static caches = Object.create(null)
 
   static findOrCreate(id = isRequired()) {
-    this._id = this._id || Math.random().toString(36).slice(2) // 向构造函数添加 _id 标志
+    this.flag = this.flag || Math.random().toString(36).slice(2) // 向构造函数添加 flag 标志
 
-    const key = `${this._id}_${id}`
+    const key = `${this.flag}_${id}`
     let value = this.caches[key]
 
     if (!value) {
@@ -21,8 +21,8 @@ export default class {
   }
 
   static remove(id) {
-    if (this._id && id) {
-      const key = `${this._id}_${id}`
+    if (this.flag && id) {
+      const key = `${this.flag}_${id}`
       const value = this.caches[key]
       value && delete this.caches[key]
     }
