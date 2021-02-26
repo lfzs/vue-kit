@@ -1,6 +1,4 @@
-import Cache from './Cache'
-
-export default class extends Cache {
+export default class {
   data = []
 
   state = 'pending'
