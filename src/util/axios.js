@@ -17,11 +17,13 @@ function handleResponse(response) {
 }
 
 async function handleResponseError(error) {
-  const { response: { data, status } } = error
+  const { response: { data, status }, config: { ignore401 = false } } = error
 
   if (status === 401) {
-    authStore.setNext(location.href)
-    await router.replace({ path: 'signin' })
+    if (!ignore401) {
+      authStore.setNext(location.href)
+      await router.replace('/signin')
+    }
   }
 
   return Promise.reject(data)
