@@ -18,8 +18,6 @@ yarn start
 │   ├── app.vue
 │   ├── component # 组件目录
 │   ├── constant # 常量
-│   ├── env.js
-│   ├── filter # 过滤器
 │   ├── helper
 │   ├── main.js # 入口文件
 │   ├── router.js # 路由
@@ -43,8 +41,6 @@ yarn start
 
 ## 注意事项
 
-- 自动全局注册 src/component 文件下的组件(只匹配 base-*.vue 命名的组件，其他命名方式不会注册)
+- 会自动全局注册 src/component/base 文件下的组件(只匹配 base-*.vue 命名的组件，其他命名方式不会注册)
 
 - element-plus 组件按需加载, 需要手动在 src/component/element-plus 添加
-
-- 如果你需要在提交到仓库时开启代码格式检查, 需要执行 yarn husky install 安装 git 的钩子
