@@ -23,8 +23,8 @@ import elementPlus from '@/component/element-plus'
 elementPlus(app) // element 组件全局注册
 import '@/style/var-element.scss' // 覆盖样式
 
-import baseComponent from '@/component/base-component'
-baseComponent(app) // base-* 组件全局注册
+import registerBaseComponent from '@/component/base'
+registerBaseComponent(app) // base-* 组件全局注册
 
 import router from '@/router'
 app.use(router) // 路由注册
