@@ -11,7 +11,7 @@
 
     setup() {
       return {
-        desc: 'Hello Vue!'
+        desc: 'Hello Vue!',
       }
     },
   }

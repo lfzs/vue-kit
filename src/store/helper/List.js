@@ -62,13 +62,13 @@ export default class {
 
   replaceItem(newItem) {
     const index = this.data.findIndex(item => item.id === newItem.id)
-    if (index > -1) this.data.splice(index, 1, newItem)
+    if (index > -1) this.data[index] = newItem
   }
 
   unshiftOrUpdate(newItem) {
     const index = this.data.findIndex(item => +item.id === +newItem.id)
     if (index > -1) {
-      this.data.splice(index, 1, newItem)
+      this.data[index] = newItem
     } else {
       this.data.unshift(newItem)
       this.meta.total += 1

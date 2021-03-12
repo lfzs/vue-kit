@@ -1,6 +1,6 @@
 export default new class {
-
   #next = '' // 登陆成功后需要跳转的页面
+
   setNext(path) {
     this.#next || (this.#next = path)
   }
@@ -10,7 +10,7 @@ export default new class {
     this.#next = ''
   }
 
-  signin({ mobile = '', password = '' }) {
-    return axios.post('login', { mobile, password })
+  signin(body) {
+    return axios.post('login', body)
   }
 }
