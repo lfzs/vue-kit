@@ -1,5 +1,3 @@
-import { reactive } from 'vue'
-
 const isRequired = () => {
   throw new Error('id is required')
 }
@@ -14,7 +12,7 @@ export default class {
     if (!this.caches.has(key)) {
       const value = new this(id)
       value.id = id
-      this.caches.set(key, reactive(value)) // 将 value 值变成响应式
+      this.caches.set(key, value)
     }
 
     return this.caches.get(key)
