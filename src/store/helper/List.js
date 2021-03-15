@@ -1,8 +1,10 @@
-export default class {
-  data = []
+import { ref } from 'vue'
 
-  state = 'pending'
-  meta = { total: 0, pageSize: 20 }
+export default class {
+  data = ref([])
+
+  state = ref('pending')
+  meta = ref({ total: 0, pageSize: 20 })
 
   api = ''
   param = {}
@@ -12,78 +14,78 @@ export default class {
   }
 
   async fetchData() {
-    this.state = 'pending'
+    this.state.value = 'pending'
     try {
-      const { data, meta } = await axios.get(this.api, { params: { offset: 1, pageSize: this.meta.pageSize, ...this.param } })
-      this.data = data ?? this.data
-      this.meta = meta ?? this.meta
-      this.state = 'done'
+      const { data, meta } = await axios.get(this.api, { params: { offset: 1, pageSize: this.meta.value.pageSize, ...this.param } })
+      this.data.value = data ?? this.data.value
+      this.meta.value = meta ?? this.meta.value
+      this.state.value = 'done'
     } catch (error) {
-      this.state = 'error'
+      this.state.value = 'error'
       throw error
     }
   }
 
   tryFetchData() {
-    return this.state !== 'done' && this.fetchData()
+    return this.state.value !== 'done' && this.fetchData()
   }
 
   async fetchMoreData() {
-    if (this.state === 'pending') return
+    if (this.state.value === 'pending') return
     if (!this.canLoadmore) return
 
-    this.state = 'pending'
+    this.state.value = 'pending'
     try {
-      const { data, meta } = await axios.get(this.api, { params: { offset: this.data.length, pageSize: this.meta.pageSize, ...this.param } })
-      this.data.push(...data)
-      this.meta = meta
-      this.state = 'done'
+      const { data, meta } = await axios.get(this.api, { params: { offset: this.data.value.length, pageSize: this.meta.value.pageSize, ...this.param } })
+      this.data.value.push(...data)
+      this.meta.value = meta
+      this.state.value = 'done'
     } catch (error) {
-      this.state = 'error'
+      this.state.value = 'error'
       throw error
     }
   }
 
   findItemById(id) {
-    return this.data.find(item => item.id === +id)
+    return this.data.value.find(item => item.id === +id)
   }
 
   findIndexById(id) {
-    return this.data.findIndex(item => item.id === +id)
+    return this.data.value.findIndex(item => item.id === +id)
   }
 
   removeItemById(id) {
     const index = this.findIndexById(id)
     if (index > -1) {
-      this.data.splice(index, 1)
-      this.meta.total -= 1
+      this.data.value.splice(index, 1)
+      this.meta.value.total -= 1
     }
   }
 
   replaceItem(newItem) {
-    const index = this.data.findIndex(item => item.id === newItem.id)
-    if (index > -1) this.data[index] = newItem
+    const index = this.data.value.findIndex(item => item.id === newItem.id)
+    if (index > -1) this.data.value[index] = newItem
   }
 
   unshiftOrUpdate(newItem) {
-    const index = this.data.findIndex(item => +item.id === +newItem.id)
+    const index = this.data.value.findIndex(item => +item.id === +newItem.id)
     if (index > -1) {
-      this.data[index] = newItem
+      this.data.value[index] = newItem
     } else {
-      this.data.unshift(newItem)
-      this.meta.total += 1
+      this.data.value.unshift(newItem)
+      this.meta.value.total += 1
     }
   }
 
   get status() {
     return {
-      isNoMore: this.state === 'done' && this.data.length >= this.meta.total,
-      isLoading: this.state === 'pending',
-      isEmpty: this.state !== 'pending' && !this.data.length,
+      isNoMore: this.state.value === 'done' && this.data.value.length >= this.meta.value.total,
+      isLoading: this.state.value === 'pending',
+      isEmpty: this.state.value !== 'pending' && !this.data.value.length,
     }
   }
 
   get canLoadmore() {
-    return this.state === 'done' && this.data.length < this.meta.total
+    return this.state.value === 'done' && this.data.value.length < this.meta.value.total
   }
 }
