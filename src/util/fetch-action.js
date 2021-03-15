@@ -2,9 +2,10 @@ export default function(target, name, descriptor) { // target 为类的原型对
   const { value } = descriptor
   if (typeof value !== 'function') throw new Error(`${name} is not a function`)
 
-  target.tryFetchData = function(...args) {
-    return this._state === 'done' ? this.data : this.fetchData(...args) // 注意: 请求过，就返回已有的数据 data
-  }
+  Object.defineProperty(target, 'tryFetchData', {
+    enumerable: false,
+    value: (...args) => this._state === 'done' ? this.data : this.fetchData(...args), // 注意: 请求过，就返回已有的数据 data,
+  })
 
   descriptor.value = async function(...args) {
     this._state = 'pending'
