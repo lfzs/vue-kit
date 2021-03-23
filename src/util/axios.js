@@ -1,10 +1,13 @@
-import axios from 'axios'
+import Axios from 'axios'
 import { HOST } from '@/constant'
 import router from '@/router'
 import { authStore } from '@/store'
 
-axios.defaults.baseURL = `${HOST}/api`
-axios.defaults.timeout = 60000
+const axios = Axios.create({
+  baseURL: `${HOST}/api`,
+  timeout: 60000,
+})
+
 axios.interceptors.request.use(handleRequest)
 axios.interceptors.response.use(handleResponse, handleResponseError)
 
