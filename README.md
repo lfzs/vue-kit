@@ -4,37 +4,6 @@
 
 yarn start
 
-## 目录结构
-
-```shell
-├── README.md
-├── babel.config.js
-├── package.json
-├── postcss.config.js
-├── public
-│   ├── favicon.ico
-│   └── index.html
-├── src
-│   ├── app.vue
-│   ├── component # 组件目录
-│   ├── constant # 常量
-│   ├── helper
-│   ├── main.js # 入口文件
-│   ├── router.js # 路由
-│   ├── static
-│   ├── store
-│   │   ├── helper
-│   │   │   ├── Cache.js # 将需要缓存的 store 缓存到内存中
-│   │   │   └── List.js # 列表 store 可继承使用
-│   │   └── index.js
-│   ├── style
-│   ├── util
-│   │   └── fetch-action.js # 用来装饰 store 的 fetchData 方法，监听请求是否完成，并添加 tryFetchData 方法
-│   └── view
-├── webpack.config.js
-└── yarn.lock
-```
-
 ## 命名规范
 
 - 文件/文件夹命名：单数、小写、中划线分割、构造函数的文件首字母大写(如: Item-detail-store.js)

@@ -1,4 +1,4 @@
-import { ref } from 'vue'
+import { computed, ref } from 'vue'
 
 export default class {
   data = ref([])
@@ -8,6 +8,14 @@ export default class {
 
   api = ''
   param = {}
+
+  status = computed(() => ({
+    isNoMore: this.state.value === 'done' && this.data.value.length >= this.meta.value.total,
+    isLoading: this.state.value === 'pending',
+    isEmpty: this.state.value !== 'pending' && !this.data.value.length,
+  }))
+
+  canLoadmore = computed(() => (this.state.value === 'done') && (this.data.value.length < this.meta.value.total))
 
   setParam(param = {}) {
     this.param = { ...this.param, ...param }
@@ -75,17 +83,5 @@ export default class {
       this.data.value.unshift(newItem)
       this.meta.value.total += 1
     }
-  }
-
-  get status() {
-    return {
-      isNoMore: this.state.value === 'done' && this.data.value.length >= this.meta.value.total,
-      isLoading: this.state.value === 'pending',
-      isEmpty: this.state.value !== 'pending' && !this.data.value.length,
-    }
-  }
-
-  get canLoadmore() {
-    return this.state.value === 'done' && this.data.value.length < this.meta.value.total
   }
 }
