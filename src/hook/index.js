@@ -1,1 +1,1 @@
-export useRouteArgs from './use-route-args'
+export useRouteParam from './use-route-param'
