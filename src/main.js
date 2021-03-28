@@ -28,4 +28,4 @@ registerBaseComponent(app) // base-* 组件全局注册
 
 import router from '@/router'
 app.use(router) // 路由注册
-router.isReady().then(() => app.mount('#app'))
+router.isReady().then(() => app.mount('body'))
