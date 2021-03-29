@@ -4,7 +4,7 @@
 
       <suspense v-if="route.meta.suspense">
         <component :is="Component" />
-        <template #fallback><base-fallback :error="error" /></template>
+        <template #fallback><base-fallback v-model:error="error" /></template>
       </suspense>
       <component :is="Component" v-else />
 
@@ -18,7 +18,7 @@
     name: 'app',
     setup() {
       const error = ref(null)
-      onErrorCaptured((e, instance, info) => (info === 'setup function') && (error.value = e))
+      onErrorCaptured((e, instance, info) => (info === 'setup function') && (error.value = e)) // 只捕获 setup function 的 error
 
       // 路由重载
       const active = ref(true)
