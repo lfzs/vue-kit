@@ -9,6 +9,7 @@ const routes = [
     component: () => import('@/view/home'),
     meta: {
       title: 'home',
+      suspense: true,
     },
   },
   {
@@ -25,6 +26,7 @@ const routes = [
       },
     ],
   },
+  { path: '/signin', component: { render: () => h('h3', 'sign in page') } },
 ]
 
 const router = createRouter({

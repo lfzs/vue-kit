@@ -20,16 +20,16 @@ function handleResponse(response) {
 }
 
 async function handleResponseError(error) {
-  const { response: { data, status }, config: { ignore401 = false } } = error
+  const { response, config: { ignore401 = false } } = error
 
-  if (status === 401) {
+  if (response?.status === 401) {
     if (!ignore401) {
       authStore.setNext(location.href)
       await router.replace('/signin')
     }
   }
 
-  return Promise.reject(data)
+  return Promise.reject(error) // 注意：请求错误是抛出 error
 }
 
 export default axios
