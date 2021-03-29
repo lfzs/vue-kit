@@ -1,5 +1,5 @@
 <template>
-  <div class="base-page-error flex-center">
+  <div class="base-page-error flex-center" @click="onReload">
     {{ code }}{{ msg }}
   </div>
 </template>
@@ -16,6 +16,17 @@
         type: Number,
         default: null
       },
+    },
+
+    emits: ['clearError'],
+
+    setup(props, { emit }) {
+      return {
+        onReload() {
+          emit('clearError')
+          window.refreshCurrentRoute()
+        },
+      }
     },
   }
 </script>

@@ -1,10 +1,9 @@
 <template>
-  <base-page-error v-if="error" :msg="msg" :code="code" />
+  <base-page-error v-if="error" :msg="msg" :code="code" @clearError="() => $emit('update:error', null)" />
   <base-page-loading v-else />
 </template>
 
 <script>
-
   import { getErrorMessage } from '@/util'
   import { computed } from 'vue'
   export default {
@@ -15,6 +14,8 @@
         default: null,
       },
     },
+
+    emits: ['update:error'],
 
     setup(props) {
       return {
