@@ -5,27 +5,23 @@
 </template>
 
 <script>
+  import { computed } from 'vue'
+  import { getErrorMessage } from '@/util'
+
   export default {
     name: 'base-page-error',
     props: {
-      msg: {
-        type: String,
-        default: '',
-      },
-      code: {
-        type: Number,
-        default: null
+      error: {
+        type: Object,
+        default: () => ({}),
       },
     },
 
-    emits: ['clearError'],
-
-    setup(props, { emit }) {
+    setup(props) {
       return {
-        onReload() {
-          emit('clearError')
-          window.refreshCurrentRoute()
-        },
+        msg: computed(() => getErrorMessage(props.error?.response?.data)),
+        code: computed(() => props.error?.response?.status),
+        onReload: () => window.refreshCurrentRoute(),
       }
     },
   }

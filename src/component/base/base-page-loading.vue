@@ -27,6 +27,6 @@
     height: calc(100 * var(--vh));
     font-size: 16px;
     opacity: 0;
-    animation: opacity 3s infinite 2s;
+    animation: opacity 2s infinite 1s;
   }
 </style>
