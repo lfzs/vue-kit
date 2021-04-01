@@ -1,6 +1,7 @@
 import { computed, ref } from 'vue'
+import Cache from './Cache'
 
-export default class {
+export default class extends Cache {
   data = ref([])
 
   state = ref('pending')
