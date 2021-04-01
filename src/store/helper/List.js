@@ -41,7 +41,7 @@ export default class extends Cache {
 
   async fetchMoreData() {
     if (this.state.value === 'pending') return
-    if (!this.canLoadmore) return
+    if (!this.canLoadmore.value) return
 
     this.state.value = 'pending'
     try {
