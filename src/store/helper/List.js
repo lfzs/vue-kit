@@ -1,5 +1,6 @@
 import { computed, ref } from 'vue'
 import Cache from './Cache'
+import _ from 'lodash'
 
 export default class extends Cache {
   data = ref([])
@@ -26,8 +27,8 @@ export default class extends Cache {
     this.state.value = 'pending'
     try {
       const { data, meta } = await axios.get(this.api, { params: { offset: 1, pageSize: this.meta.value.pageSize, ...this.param } })
-      this.data.value = data ?? this.data.value
-      this.meta.value = meta ?? this.meta.value
+      _.isNil(data) || (this.data.value = data)
+      _.isNil(meta) || (this.meta.value = meta)
       this.state.value = 'done'
     } catch (error) {
       this.state.value = 'error'

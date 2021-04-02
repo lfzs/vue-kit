@@ -2,10 +2,10 @@
   "name": "vue-kit",
   "private": true,
   "scripts": {
-    "start": "yarn && husky install && cross-env APP_ENV=development BASE_URL=\/ webpack-dev-server",
-    "dev": "yarn && cross-env APP_ENV=development BASE_URL=\/ webpack",
-    "staging": "yarn && cross-env APP_ENV=staging BASE_URL=\/ webpack",
-    "build": "yarn && cross-env APP_ENV=production BASE_URL=\/ webpack",
+    "start": "yarn && husky install && cross-env APP_ENV=development BASE_URL=/ webpack-dev-server",
+    "dev": "yarn && cross-env APP_ENV=development BASE_URL=/ webpack",
+    "staging": "yarn && cross-env APP_ENV=staging BASE_URL=/ webpack",
+    "build": "yarn && cross-env APP_ENV=production BASE_URL=/ webpack",
     "lint": "yarn && stylelint --max-warnings 0 \"src/**/*.{vue,html,css,less,scss,sass}\" && eslint --max-warnings 0 \"src/**/*.{js,vue}\""
   },
   "lint-staged": {
@@ -20,7 +20,7 @@
     "es6-promise": "^4.2.8",
     "lodash": "^4.17.21",
     "normalize.css": "^8.0.1",
-    "vue": "^3.0.9",
+    "vue": "^3.0.11",
     "vue-router": "^4.0.5"
   },
   "devDependencies": {
@@ -34,7 +34,7 @@
     "@babel/plugin-proposal-private-methods": "^7.13.0",
     "@babel/plugin-transform-runtime": "^7.13.10",
     "@babel/preset-env": "^7.13.12",
-    "@vue/compiler-sfc": "^3.0.10",
+    "@vue/compiler-sfc": "^3.0.11",
     "autoprefixer": "^10.2.5",
     "babel-loader": "^8.2.2",
     "babel-plugin-component": "^1.1.1",
@@ -63,8 +63,8 @@
     "stylelint-config-standard": "^21.0.0",
     "stylelint-webpack-plugin": "^2.1.1",
     "vue-eslint-parser": "^7.6.0",
-    "vue-loader": "^16.1.2",
-    "webpack": "^5.28.0",
+    "vue-loader": "^16.2.0",
+    "webpack": "^5.30.0",
     "webpack-bundle-analyzer": "^4.4.0",
     "webpack-cli": "^4.6.0",
     "webpack-dev-server": "^4.0.0-beta.1"
