@@ -1,8 +1,8 @@
 import { fetchAction } from '@/util'
-import { ref } from 'vue'
+import { reactive } from 'vue'
 
 export default new class {
-  data = ref({})
+  data = reactive([])
 
   @fetchAction
   fetchData() {
