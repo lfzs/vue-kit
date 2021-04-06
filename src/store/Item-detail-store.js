@@ -1,9 +1,9 @@
 import { fetchAction } from '@/util'
 import { Cache } from '@/store'
-import { ref } from 'vue'
+import { reactive } from 'vue'
 
 export default class extends Cache {
-  data = ref({})
+  data = reactive({})
 
   @fetchAction
   fetchData() {
