@@ -1,26 +1,20 @@
 <template>
-  <suspense v-if="suspense">
+  <suspense>
     <component :is="component" />
     <template #fallback>
       <base-page-error v-if="error" :error="error" />
       <base-page-loading v-else />
     </template>
   </suspense>
-
-  <component :is="component" v-else />
 </template>
 
 <script>
   import { ref, onErrorCaptured } from 'vue'
 
   export default {
-    name: 'base-loading-screen',
+    name: 'base-page',
 
     props: {
-      suspense: {
-        type: Boolean,
-        default: false,
-      },
       component: {
         type: Object,
         default: () => ({}),
