@@ -1,5 +1,7 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import { APP_NAME } from '@/constant'
+import { beforeRouteAlive, afterRouteAlive } from '@/util/route-alive'
+
 import { h } from 'vue'
 
 const routes = [
@@ -9,7 +11,6 @@ const routes = [
     component: () => import('@/view/home'),
     meta: {
       title: 'home',
-      suspense: true,
     },
   },
   {
@@ -27,6 +28,7 @@ const routes = [
     ],
   },
   { path: '/signin', component: { render: () => h('h3', 'sign in page') } },
+  { path: '/404', component: { render: () => h('h3', '404') } },
 ]
 
 const router = createRouter({
@@ -34,9 +36,15 @@ const router = createRouter({
   history: createWebHistory(process.env.BASE_URL || '/'),
 })
 
-router.beforeEach((to, from, next) => {
+router.beforeEach((to, from) => {
   document.title = to.meta.title ?? APP_NAME
-  next()
+  beforeRouteAlive(to, from)
+  if (!to.matched.length) return '/404'
+
+})
+
+router.afterEach((to, from) => {
+  afterRouteAlive(to, from)
 })
 
 export default router

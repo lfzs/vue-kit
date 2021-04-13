@@ -6,15 +6,12 @@
 </template>
 
 <script>
-  import { homeStore } from '@/store'
   export default {
     name: 'home',
 
-    async setup() {
-      await homeStore.tryFetchData()
+    setup() {
       return {
         desc: 'Hello Vue!',
-        homeStore,
       }
     },
   }
