@@ -23,12 +23,10 @@ module.exports = {
   mode: isDev ? 'development' : 'production',
   devServer: {
     host: '0.0.0.0',
-    useLocalIp: true,
-    // open: true,
-    // openPage: process.env.BASE_URL || '/', // https://github.com/webpack/webpack-dev-server/pull/2582
+    port: 8080,
+    // open: process.env.BASE_URL || '/',
     historyApiFallback: true, // 路由全部重定向到首页
-    client: { logging: 'none' },
-    static: { watch: false },
+    client: { logging: 'none', overlay: false },
     // proxy: {
     //   '/api': {
     //     target: '',

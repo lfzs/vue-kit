@@ -1,10 +1,7 @@
 <template>
   <router-view v-slot="{ Component }" v-if="active">
     <template v-if="Component">
-      <keep-alive>
-        <base-page :component="Component" v-if="$route.meta.keepAlive" :key="$route.fullPath" />
-      </keep-alive>
-      <base-page :component="Component" v-if="!$route.meta.keepAlive" :key="$route.fullPath" />
+      <base-page :component="Component" />
     </template>
   </router-view>
 </template>
