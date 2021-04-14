@@ -1,6 +1,6 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import { APP_NAME } from '@/constant'
-import { beforeRouteAlive, afterRouteAlive } from '@/util/route-alive'
+import { beforeRoute, afterRoute } from '@/util/route-forward'
 
 import { h } from 'vue'
 
@@ -38,13 +38,13 @@ const router = createRouter({
 
 router.beforeEach((to, from) => {
   document.title = to.meta.title ?? APP_NAME
-  beforeRouteAlive(to, from)
+  beforeRoute(to, from)
   if (!to.matched.length) return '/404'
 
 })
 
 router.afterEach((to, from) => {
-  afterRouteAlive(to, from)
+  afterRoute(to, from)
 })
 
 export default router

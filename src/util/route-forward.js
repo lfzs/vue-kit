@@ -1,22 +1,15 @@
-const stack = [] // 路由栈
-const routeHistory = new Set() // 全部路由历史
-let currentHistoryState = {}
+// 根据 history.state 判断页面是前进还是后退
 
-export function beforeRouteAlive(to, from) {
+const stack = [] // 路由栈
+let currentHistoryState = {} // beforeEach 前 history.state 已经更新了，所以需要使用手动记录
+
+export function beforeRoute(to) {
   const target = stack.find(item => item.fullPath === to.fullPath)
   const forward = !target || target.position > currentHistoryState.position
   to.meta.forward = forward
-
-  if (forward) {
-    from.meta.keepAlive = true
-    !routeHistory.has(to.fullPath) && (to.meta.keepAlive = true) // 第一次访问缓存，其他都不缓存
-  } else {
-    from.meta.keepAlive = false
-    to.meta.keepAlive = true
-  }
 }
 
-export function afterRouteAlive(to) {
+export function afterRoute(to) {
   const { position } = history.state
   const index = stack.findIndex(item => item.position === position)
   currentHistoryState = { ...history.state, fullPath: to.fullPath }
@@ -27,7 +20,4 @@ export function afterRouteAlive(to) {
   } else {
     stack.push(currentHistoryState)
   }
-
-  routeHistory.add(to.fullPath)
 }
-
