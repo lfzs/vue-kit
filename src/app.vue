@@ -1,26 +1,18 @@
 <template>
-  <router-view v-slot="{ Component }" v-if="active">
-    <template v-if="Component">
+  <router-view v-slot="{ Component }">
+    <template v-if="currentRoute">
       <base-page :component="Component" />
     </template>
   </router-view>
 </template>
 
 <script>
-  import { ref, nextTick } from 'vue'
+  import { currentRoute } from '@/store'
   export default {
     name: 'app',
     setup() {
-
-      // 路由重载
-      const active = ref(true)
-      window.refreshCurrentRoute = () => {
-        active.value = false
-        nextTick(() => active.value = true)
-      }
-
       return {
-        active,
+        currentRoute,
       }
     }
   }
