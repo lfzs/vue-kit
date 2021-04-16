@@ -5,7 +5,7 @@ html {
   font-family: system -apple-system, BlinkMacSystemFont, 'Helvetica Neue', 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', Arial, sans-serif;
   color: @color;
   background-color: @bg;
-  line-height: 1; // 默认行高设为 1，多行的行高需要手动去设置。行内元素高度计算复杂，建议行内元素修改为块块级元素
+  line-height: 1.15; // 默认行高设为 1.15
   font-size: 14px;
 }
 
@@ -26,9 +26,13 @@ body {
   display: none; // 去除所有元素的滚动条
 }
 
-a { text-decoration: none; }
+a {
+  text-decoration: none;
+}
 
-img { vertical-align: middle; }
+img {
+  vertical-align: middle;
+}
 
 input {
   outline: none;
@@ -41,6 +45,14 @@ button {
   border: none;
 }
 
-::-moz-placeholder { color: @placeholder; }
-::-webkit-input-placeholder { color: @placeholder; }
-:-ms-input-placeholder { color: @placeholder; }
+::-moz-placeholder {
+  color: @placeholder;
+}
+
+::-webkit-input-placeholder {
+  color: @placeholder;
+}
+
+:-ms-input-placeholder {
+  color: @placeholder;
+}

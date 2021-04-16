@@ -1,8 +1,17 @@
 <template>
   <div class="base-list-status">
-    <div class="flex-center" v-if="status.isEmpty">{{ emptyText }}</div>
-    <div class="flex-center" v-else-if="status.isNoMore">{{ reachBottomText }}</div>
-    <div class="flex-center" v-else><i class="el-icon-loading" />{{ loadingText }}</div>
+    <slot name="empty" v-if="status.isEmpty">
+      <div class="flex-center">{{ emptyText }}</div>
+    </slot>
+
+    <slot name="noMore" v-else-if="status.isNoMore">
+      <div class="flex-center">{{ reachBottomText }}</div>
+    </slot>
+
+    <slot name="loading" v-else>
+      <div class="flex-center"><i class="el-icon-loading" />{{ loadingText }}</div>
+    </slot>
+
   </div>
 </template>
 
@@ -30,7 +39,7 @@
   }
 </script>
 
-<style lang="less">
+<style lang="less" scoped>
   .base-list-status {
     color: @color2;
     padding: 30px 0;
