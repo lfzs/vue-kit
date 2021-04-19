@@ -2,6 +2,8 @@ import Axios from 'axios'
 import { HOST } from '@/constant'
 import router from '@/router'
 import { authStore } from '@/store'
+import { ElMessage } from 'element-plus'
+import { getErrorMessage } from '@/util'
 
 const axios = Axios.create({
   baseURL: `${HOST}/api`,
@@ -20,13 +22,15 @@ function handleResponse(response) {
 }
 
 async function handleResponseError(error) {
-  const { response, config: { ignore401 = false } } = error
+  const { response, config: { ignore401 = false, getErrorToast = true } } = error
 
   if (response?.status === 401) {
     if (!ignore401) {
       authStore.setNext(location.href)
       await router.replace('/signin')
     }
+  } else {
+    getErrorToast && ElMessage.error(getErrorMessage(response?.data)) // get 请求出错 toast 提示
   }
 
   return Promise.reject(error) // 注意：请求错误是抛出 error
