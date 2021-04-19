@@ -8,11 +8,15 @@ const axios = Axios.create({
   timeout: 60000,
 })
 
-axios.interceptors.request.use(handleRequest)
+axios.interceptors.request.use(handleRequest, handleRequestError)
 axios.interceptors.response.use(handleResponse, handleResponseError)
 
 function handleRequest(request) {
   return request
+}
+
+function handleRequestError(error) {
+  return Promise.reject(error)
 }
 
 function handleResponse(response) {
