@@ -26,7 +26,7 @@ export default class extends Cache {
   async fetchData() {
     this.state.value = 'pending'
     try {
-      const { data, meta } = await axios.get(this.api, { params: { offset: 1, pageSize: this.meta.pageSize, ...this.param } })
+      const { data, meta } = await axios.get(this.api, { params: { offset: this.data.length, pageSize: this.meta.pageSize, ...this.param } })
       this.state.value = 'done'
       if (_.isNil(data)) return
       this.data.length = 0 // 清空数组
