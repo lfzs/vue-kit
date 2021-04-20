@@ -74,9 +74,19 @@
   cursor: pointer;
 }
 
+// 元素禁止点击
 .none-pointer-events {
   pointer-events: none;
   cursor: not-allowed;
+}
+
+// fix margin 重叠
+.margin-collapse {
+  &::before,
+  &::after {
+    content: '';
+    display: table;
+  }
 }
 
 .primary {
