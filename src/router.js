@@ -40,7 +40,6 @@ router.beforeEach((to, from) => {
   document.title = to.meta.title ?? APP_NAME
   beforeRoute(to, from)
   if (!to.matched.length) return '/404'
-
 })
 
 router.afterEach((to, from) => {

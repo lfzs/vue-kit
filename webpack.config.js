@@ -56,6 +56,7 @@ module.exports = {
     rules: [
       { test: /\.vue$/, use: 'vue-loader', exclude: /node_modules/ },
       { test: /\.js$/, use: 'babel-loader', exclude: /node_modules/ },
+      { test: /\.tsx?$/, loader: 'ts-loader' },
 
       { test: /\.css$/, use: [isDev ? 'style-loader' : MiniCssExtractPlugin.loader, 'css-loader', 'postcss-loader'] },
       { test: /\.less$/, use: [isDev ? 'style-loader' : MiniCssExtractPlugin.loader, 'css-loader', 'postcss-loader', { loader: 'less-loader', options: { additionalData: '@import "@/style/var-less.less";' } }] },
