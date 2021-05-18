@@ -3,6 +3,7 @@ import 'es6-promise/auto' // 一些第三方包会依赖 Promise 环境
 // 全局样式
 import 'normalize.css'
 import '@/style/reset.less'
+import '@/style/icon-class.less'
 import '@/style/var-class.less'
 
 // 根元素添加 --vh 变量

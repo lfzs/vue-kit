@@ -1,3 +1,5 @@
+import router from '@/router'
+
 export default new class {
   #next = '' // 登陆成功后需要跳转的页面
 
@@ -6,7 +8,7 @@ export default new class {
   }
 
   signinNext() {
-    location.replace(this.#next || '/')
+    this.#next ? location.replace(this.#next) : router.back()
     this.#next = ''
   }
 
