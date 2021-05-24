@@ -18,13 +18,13 @@ module.exports = {
     filename: `js/${isDev ? '[name]' : '[fullhash]'}.js`,
     chunkFilename: `js/${isDev ? 'chunk.[name]' : '[contenthash]'}.js`,
     assetModuleFilename: 'static/[hash][ext][query]',
-    publicPath: process.env.BASE_URL || '/',
+    publicPath: process.env.BASE_URL,
   },
   mode: isDev ? 'development' : 'production',
   devServer: {
     host: '0.0.0.0',
     port: 8080,
-    // open: process.env.BASE_URL || '/',
+    // open: process.env.BASE_URL,
     historyApiFallback: true, // 路由全部重定向到首页
     client: { logging: 'none', overlay: false },
     // proxy: {
