@@ -23,7 +23,6 @@ module.exports = {
   mode: isDev ? 'development' : 'production',
   devServer: {
     host: '0.0.0.0',
-    port: 8080,
     // open: process.env.BASE_URL,
     historyApiFallback: true, // 路由全部重定向到首页
     client: { logging: 'none', overlay: false },
@@ -56,7 +55,6 @@ module.exports = {
     rules: [
       { test: /\.vue$/, use: 'vue-loader', exclude: /node_modules/ },
       { test: /\.js$/, use: 'babel-loader', exclude: /node_modules/ },
-      { test: /\.tsx?$/, loader: 'ts-loader' },
 
       { test: /\.css$/, use: [isDev ? 'style-loader' : MiniCssExtractPlugin.loader, 'css-loader', 'postcss-loader'] },
       { test: /\.less$/, use: [isDev ? 'style-loader' : MiniCssExtractPlugin.loader, 'css-loader', 'postcss-loader', { loader: 'less-loader', options: { additionalData: '@import "@/style/var-less.less";' } }] },
