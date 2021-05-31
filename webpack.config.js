@@ -50,7 +50,7 @@ module.exports = {
     new StyleLintPlugin({ files: '**/*.{vue,html,css,less,scss,sass}', context: resolve('src'), emitWarning: true, failOnError: !isDev, failOnWarning: !isDev }),
     new ESLintPlugin({ extensions: ['js', 'vue'], context: resolve('src'), failOnError: !isDev, failOnWarning: !isDev }),
     new HtmlWebpackPlugin({ template: './public/index.html', favicon: './public/favicon.ico' }),
-    new CopyPlugin({ patterns: [{ from: './public/!(index.html|favicon.ico)/**/*', noErrorOnMissing: true }] }),
+    new CopyPlugin({ patterns: [{ from: './public/**/*', globOptions: { ignore: ['**/public/index.html', '**/public/favicon.ico'] }, noErrorOnMissing: true }] }),
   ].concat(isDev ? [new webpack.HotModuleReplacementPlugin()] : [new MiniCssExtractPlugin({ filename: 'css/[contenthash].css', chunkFilename: 'css/[contenthash].css' })]),
   module: {
     rules: [

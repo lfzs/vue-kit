@@ -2,6 +2,7 @@ module.exports = {
   presets: ['@babel/preset-env'],
   plugins: [
     'lodash',
+    '@vue/babel-plugin-jsx',
     ['component', { 'libraryName': 'element-plus', 'styleLibraryName': 'theme-chalk' }],
     '@babel/plugin-proposal-export-default-from',
     '@babel/plugin-proposal-optional-chaining',
