@@ -5,7 +5,11 @@
     </slot>
 
     <slot name="noMore" v-else-if="status.isNoMore">
-      <div class="flex-center">{{ reachBottomText }}</div>
+      <div class="flex-center">{{ noMoreText }}</div>
+    </slot>
+
+    <slot name="loadMore" v-else-if="status.canLoadMore">
+      <div class="flex-center" @click="() => $emit('loadMore')">{{ loadMoreText }}</div>
     </slot>
 
     <slot name="loading" v-else>
@@ -18,6 +22,7 @@
 <script>
   export default {
     name: 'list-status',
+    emits: ['loadMore'],
     props: {
       status: {
         type: Object,
@@ -27,9 +32,13 @@
         type: String,
         default: '暂无数据',
       },
-      reachBottomText: {
+      noMoreText: {
         type: String,
         default: '已经到底了',
+      },
+      loadMoreText: {
+        type: String,
+        default: '加载更多',
       },
       loadingText: {
         type: String,

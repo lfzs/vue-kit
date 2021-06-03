@@ -12,7 +12,7 @@ export default class extends Cache {
   param = {}
 
   status = computed(() => ({
-    canLoadmore: this.state.value === 'done' && this.data.length < this.meta.total,
+    canLoadMore: this.state.value === 'done' && this.data.length < this.meta.total,
     isNoMore: this.state.value === 'done' && this.data.length >= this.meta.total,
     isLoading: this.state.value === 'pending',
     isEmpty: this.state.value !== 'pending' && !this.data.length,
@@ -43,7 +43,7 @@ export default class extends Cache {
 
   async fetchMoreData() {
     if (this.state.value === 'pending') return
-    if (!this.status.value.canLoadmore) return
+    if (!this.status.value.canLoadMore) return
 
     this.state.value = 'pending'
     try {
