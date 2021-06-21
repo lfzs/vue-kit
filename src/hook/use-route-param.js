@@ -2,7 +2,7 @@ import { computed } from 'vue'
 import { useRoute } from 'vue-router'
 
 // 解构 route 中的 params query hash meta
-export default function() {
+export default function useRouteParam() {
   const route = useRoute()
   return computed(() => ({
     ...route.params,

@@ -5,6 +5,7 @@
 <script>
   import { computed, ref, onBeforeUnmount } from 'vue'
   import { formatSecond } from '@/util'
+  import dayjs from 'dayjs'
 
   export default {
     name: 'count-down',
@@ -28,7 +29,8 @@
     setup(props, { emit }) {
       let timer = null
 
-      const s = Math.floor((new Date(props.end) - props.now) / 1000)
+      const s = dayjs(props.end).diff(props.now, 'second')
+
       const second = ref(s > 0 ? s : 0)
       if (second.value > 0) {
         const fn = () => {

@@ -1,6 +1,6 @@
 import _ from 'lodash'
 
-export default function(target, name, descriptor) { // target 为类的原型对象
+export default function fetchAction(target, name, descriptor) { // target 为类的原型对象
   const { value } = descriptor
   if (typeof value !== 'function') throw new Error(`${name} is not a function`)
 
