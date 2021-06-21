@@ -41,6 +41,7 @@ async function handleResponseError(error) {
   const { response = {}, config: { ignore401 = false, getErrorToast = true } = {} } = error
 
   if (response.status === 401) {
+    // TODO clearToken
     if (!ignore401) {
       authStore.setNext(location.href)
       await router.replace('/signin')

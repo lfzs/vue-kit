@@ -7,10 +7,12 @@ import { h } from 'vue'
 const routes = [
   {
     path: '/',
-    alias: ['/index', '/index.html'],
+    alias: ['/index'],
     component: () => import('@/view/home'),
     meta: {
       title: 'home',
+      keepAlive: true,
+      suspense: true,
     },
   },
   {

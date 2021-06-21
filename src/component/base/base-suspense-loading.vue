@@ -1,10 +1,10 @@
 <template>
-  <div class="base-page-loading flex-center">Loading...</div>
+  <div class="base-suspense-loading flex-center height-fullscreen">Loading...</div>
 </template>
 
 <script>
   export default {
-    name: 'base-page-loading',
+    name: 'base-suspense-loading',
   }
 </script>
 
@@ -23,10 +23,9 @@
     }
   }
 
-  .base-page-loading {
-    height: calc(100 * var(--vh));
+  .base-suspense-loading {
     font-size: 16px;
     opacity: 0;
-    animation: opacity 2s infinite 1s;
+    animation: opacity 2s infinite 0.5s; // deplay 0.5s
   }
 </style>

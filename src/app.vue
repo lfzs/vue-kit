@@ -1,27 +1,25 @@
 <template>
-  <router-view v-slot="{ Component }">
-
-    <suspense>
-      <component :is="Component" />
-      <template #fallback>
-        <base-page-error v-if="error" :error="error" />
-        <base-page-loading v-else />
-      </template>
-    </suspense>
-
+  <router-view v-slot="{ Component, route }" v-if="active">
+    <base-page :component="Component" :route="route" />
   </router-view>
 </template>
 
 <script>
-  import { ref, onErrorCaptured } from 'vue'
+  import { provide, ref, nextTick } from 'vue'
   export default {
     name: 'app',
-    setup() {
-      const error = ref(null)
-      onErrorCaptured((e, instance, info) => (info === 'setup function') && (error.value = e)) // 只捕获 setup function 的 error
 
+    setup() {
+      // 路由重载
+      const active = ref(true)
+      const refreshCurrentRoute = () => {
+        active.value = false
+        nextTick(() => active.value = true)
+      }
+      provide('refreshCurrentRoute', refreshCurrentRoute)
       return {
-        error
+        active,
+        refreshCurrentRoute
       }
     }
   }
