@@ -1,10 +1,8 @@
-const flag = process.env.APP_ENV.toLocaleUpperCase()
-
 export const HOST = {
-  DEVELOPMENT: '',
-  STAGING: '',
-  PRODUCTION: '',
-}[flag]
+  development: '',
+  staging: '',
+  production: '',
+}[process.env.APP_ENV]
 
-export const TOKEN_KEY = `TOKEN_${flag}`
-export const APP_NAME = 'app_name'
+export const TOKEN_KEY = 'TOKEN_KEY'
+export const APP_NAME = 'vue-kit'
