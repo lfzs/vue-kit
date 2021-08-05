@@ -17,8 +17,9 @@
 </template>
 
 <script>
-  import { watch, onBeforeUnmount, reactive, inject } from 'vue'
-  export default {
+  import { defineComponent, watch, onBeforeUnmount, reactive, inject } from 'vue'
+
+  export default defineComponent({
     name: 'base-page',
     props: {
       component: {
@@ -50,8 +51,8 @@
 
       return {
         components,
-        refreshCurrentRoute: inject('refreshCurrentRoute')
+        refreshCurrentRoute: inject('refreshCurrentRoute'),
       }
     },
-  }
+  })
 </script>

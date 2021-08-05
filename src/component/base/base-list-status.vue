@@ -20,7 +20,9 @@
 </template>
 
 <script>
-  export default {
+  import { defineComponent } from 'vue'
+
+  export default defineComponent({
     name: 'list-status',
     emits: ['loadMore'],
     props: {
@@ -45,7 +47,7 @@
         default: '加载中...',
       },
     },
-  }
+  })
 </script>
 
 <style lang="less" scoped>

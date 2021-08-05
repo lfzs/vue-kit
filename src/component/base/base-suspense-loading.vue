@@ -1,11 +1,13 @@
 <template>
-  <div class="base-suspense-loading flex-center height-fullscreen">Loading...</div>
+  <div class="base-suspense-loading flex-center min-height-fullscreen">Loading...</div>
 </template>
 
-<script>
-  export default {
+<script lang="ts">
+  import { defineComponent } from 'vue'
+
+  export default defineComponent({
     name: 'base-suspense-loading',
-  }
+  })
 </script>
 
 <style lang="less" scoped>

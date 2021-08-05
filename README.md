@@ -12,4 +12,4 @@ yarn start
 
 - 会自动全局注册 src/component/base/ 文件夹下的组件(只匹配 base-*.vue 命名的组件，其他命名方式不会注册)
 
-- element-plus 组件按需加载, 需要手动在 src/component/element-plus 添加
+- element-plus 组件按需加载, 需要手动在 src/component/element 中添加
