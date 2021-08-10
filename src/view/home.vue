@@ -5,14 +5,19 @@
   <h2 class="flex-center">{{ desc }}</h2>
 </template>
 
-<script>
-  export default {
+<script lang="ts">
+  import { defineComponent } from 'vue'
+  import { homeStore } from '@/store'
+
+  export default defineComponent({
     name: 'home',
 
-    setup() {
+    async setup() {
+      await homeStore.fetchData()
       return {
+        homeStore,
         desc: 'Hello Vue!',
       }
     },
-  }
+  })
 </script>

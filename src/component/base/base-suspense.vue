@@ -11,8 +11,8 @@
 </template>
 
 <script>
-  import { ref, onErrorCaptured } from 'vue'
-  export default {
+  import { defineComponent, ref, onErrorCaptured } from 'vue'
+  export default defineComponent({
     name: 'base-suspense',
     emits: ['refresh'],
     props: {
@@ -34,6 +34,6 @@
       return {
         error,
       }
-    }
-  }
+    },
+  })
 </script>

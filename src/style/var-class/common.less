@@ -1,0 +1,43 @@
+.text-overflow-1 {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  word-break: break-all;
+}
+
+.text-overflow-2 {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  word-break: break-all;
+}
+
+.pointer {
+  cursor: pointer;
+}
+
+// 元素禁止点击
+.none-pointer-events {
+  pointer-events: none;
+  cursor: not-allowed;
+}
+
+// fix margin 重叠
+.margin-collapse {
+  &::before,
+  &::after {
+    content: '';
+    display: table;
+  }
+}
+
+// 高度全屏
+.min-height-fullscreen {
+  min-height: calc(100 * var(--vh));
+}
+
+.primary {
+  color: @primary;
+}

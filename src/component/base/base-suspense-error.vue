@@ -1,14 +1,14 @@
 <template>
-  <div class="base-suspense-error flex-center height-fullscreen" @click="$emit('refresh')">
+  <div class="base-suspense-error flex-center min-height-fullscreen" @click="$emit('refresh')">
     {{ message }}
   </div>
 </template>
 
 <script>
-  import { computed } from 'vue'
-  import { getErrorMessage } from '@/util'
+  import { defineComponent, computed } from 'vue'
+  import { getErrorMessage } from '@/util/common'
 
-  export default {
+  export default defineComponent({
     name: 'base-suspense-error',
     emits: ['refresh'],
     props: {
@@ -23,6 +23,5 @@
         message: computed(() => getErrorMessage(props.error)),
       }
     },
-  }
+  })
 </script>
-
