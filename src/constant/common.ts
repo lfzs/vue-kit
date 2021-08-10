@@ -10,3 +10,6 @@ export const HOST = {
   staging: '',
   production: '',
 }[APP_ENV]
+
+// 请求出错错误弹窗默认内容
+export const DEFAULT_ERROR_MESSAGE = '请求失败, 请重试'

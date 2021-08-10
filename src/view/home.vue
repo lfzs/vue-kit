@@ -7,14 +7,12 @@
 
 <script lang="ts">
   import { defineComponent } from 'vue'
-  import { sleep } from '@/util/common'
   import { homeStore } from '@/store'
 
   export default defineComponent({
     name: 'home',
 
     async setup() {
-      await sleep(200)
       await homeStore.fetchData()
       return {
         homeStore,

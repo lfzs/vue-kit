@@ -1,26 +1,18 @@
 {
   "include": ["src"],
   "compilerOptions": {
-    "target": "ESNext", // 编译成什么版本的 js
-    "module": "ESNext", // 编译成什么模块
-    // this enables stricter inference for data properties on `this`
+    "target": "ESNext",
+    "module": "ESNext",
     "strict": true,
-    "jsx": "preserve", // 原样保留 jsx
+    "jsx": "preserve",
     "moduleResolution": "node",
-
-    // https://segmentfault.com/a/1190000022792712
-    // "esModuleInterop": true,
     "allowSyntheticDefaultImports": true,
-
     "allowJs": true,
-
-    // removeComments: false, 移除注释(webpack js 统一移除)
-
+    "forceConsistentCasingInFileNames": true,
     "baseUrl": ".",
-    // "rootDir": ".",
-    "importHelpers": true, // 如 装饰器 函数从 tslib 中导入
-    "experimentalDecorators": true, // 启用装饰器
-    "resolveJsonModule": true, // 解析 JSON 模块
+    "importHelpers": true,
+    "experimentalDecorators": true,
+    "resolveJsonModule": true,
     "paths": {
        "@/*": ["src/*"],
     }

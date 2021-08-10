@@ -1,11 +1,9 @@
-// 从 response 中获取 message
-interface Response {
-  message: string,
-}
+import { RequestResponseData } from 'axios'
+import { DEFAULT_ERROR_MESSAGE } from '@/constant'
 
-function getErrorMessage(response: Response | string, defaultMessage = '请求失败, 请重试') {
-  if (typeof response === 'string') return response
-  else return response?.message ?? defaultMessage
+// 从 response 中获取 message
+function getErrorMessage(response: RequestResponseData, defaultMessage = DEFAULT_ERROR_MESSAGE) {
+  return response.message ?? defaultMessage
 }
 
 export {
