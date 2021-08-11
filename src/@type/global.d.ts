@@ -12,9 +12,10 @@ declare module '*.otf'
 
 // 识别 .vue 文件
 declare module '*.vue' {
-  import { defineComponent } from 'vue'
-  const Component: ReturnType<typeof defineComponent>
-  export default Component
+  import type { DefineComponent } from 'vue'
+  // eslint-disable-next-line @typescript-eslint/ban-types, @typescript-eslint/no-explicit-any
+  const component: DefineComponent<{}, {}, any>
+  export default component
 }
 
 // 声明 process.env 下的环境变量

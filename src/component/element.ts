@@ -1,5 +1,5 @@
 // element-ui 组件按需加载, 需要手动添加
-import { App } from 'vue'
+import type { App } from 'vue'
 
 import {
   ElInfiniteScroll,
