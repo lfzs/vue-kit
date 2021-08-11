@@ -1,4 +1,4 @@
-import { RouteLocationNormalized } from 'vue-router'
+import type { RouteLocationNormalized } from 'vue-router'
 import { APP_NAME } from '@/constant'
 
 export function setDocumentTitle(to: RouteLocationNormalized) {

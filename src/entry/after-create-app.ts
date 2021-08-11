@@ -1,4 +1,4 @@
-import { App } from 'vue'
+import type { App } from 'vue'
 import { router } from '@/router'
 import { setGlobalProperties } from '@/util/common'
 import { registerBaseComponent } from '@/component/base'
