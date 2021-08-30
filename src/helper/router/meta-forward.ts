@@ -3,7 +3,6 @@ import type { RouteLocationNormalized } from 'vue-router'
 const stack: RouteLocationNormalized[] = []
 
 function setForwardMetaBefore(to: RouteLocationNormalized) {
-  // TODO 移除 hash 存储 hash 切换不会导致页面刷新
   to.meta.forward = !stack.find(item => item.fullPath === to.fullPath)
 }
 

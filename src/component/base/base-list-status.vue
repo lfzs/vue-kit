@@ -19,35 +19,29 @@
   </div>
 </template>
 
-<script>
-  import { defineComponent } from 'vue'
-
-  export default defineComponent({
-    name: 'list-status',
-    emits: ['loadMore'],
-    props: {
-      status: {
-        type: Object,
-        required: true,
-      },
-      emptyText: {
-        type: String,
-        default: '暂无数据',
-      },
-      noMoreText: {
-        type: String,
-        default: '已经到底了',
-      },
-      loadMoreText: {
-        type: String,
-        default: '加载更多',
-      },
-      loadingText: {
-        type: String,
-        default: '加载中...',
-      },
+<script lang="ts" setup>
+  interface Props {
+    status: {
+      canLoadMore: boolean,
+      isNoMore: boolean,
+      isLoading: boolean,
+      isEmpty: boolean,
     },
+    emptyText?: string,
+    noMoreText?: string,
+    loadMoreText?: string,
+    loadingText?: string,
+  }
+
+  withDefaults(defineProps<Props>(), {
+    emptyText: '暂无数据',
+    noMoreText: '已经到底了',
+    loadMoreText: '加载更多',
+    loadingText: '加载中...',
   })
+  defineEmits<{
+    (e: 'loadMore'): void,
+  }>()
 </script>
 
 <style lang="less" scoped>

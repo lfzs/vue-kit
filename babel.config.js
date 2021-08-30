@@ -1,8 +1,15 @@
 module.exports = {
   presets: ['@babel/preset-env'],
   plugins: [
+    'lodash',
     '@vue/babel-plugin-jsx',
-    ['component', { 'libraryName': 'element-plus', 'styleLibraryName': 'theme-chalk' }],
-    ['@babel/plugin-transform-runtime', { 'corejs': { 'version': 3, 'proposals': true } }],
+    ['@babel/plugin-transform-runtime', {
+      corejs: { version: 3, proposals: true },
+    }],
+    ['import', {
+      libraryName: 'element-plus',
+      customName: name => `element-plus/lib/components/${name.slice(3)}`,
+      customStyleName: name => `element-plus/lib/components/${name.slice(3)}/style`
+    }],
   ],
 }

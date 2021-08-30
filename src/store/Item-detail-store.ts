@@ -1,7 +1,7 @@
-import { fetchAction } from '@/util/common'
+import { fetchAction } from '@/helper/common'
 import { Cache } from '@/store'
 import { reactive } from 'vue'
-import { axios } from '@/util/axios'
+import { axios } from '@/helper/axios'
 
 class ItemDetailStore extends Cache {
   data = reactive({})

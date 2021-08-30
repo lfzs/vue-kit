@@ -22,5 +22,6 @@ declare module '*.vue' {
 declare namespace NodeJS {
   interface ProcessEnv {
     readonly APP_ENV: 'development' | 'staging' | 'production',
+    readonly SSR: string,
   }
 }

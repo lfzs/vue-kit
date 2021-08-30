@@ -1,7 +1,7 @@
 import { computed, reactive, ref } from 'vue'
 import { Cache } from '@/store'
-import { isNil } from 'lodash-es'
-import { axios } from '@/util/axios'
+import { isNil } from 'lodash'
+import { axios } from '@/helper/axios'
 import { RequestResponseData } from 'axios'
 
 interface Item {
@@ -14,7 +14,7 @@ interface CustomParam {
 }
 
 abstract class List extends Cache {
-  data: Item[] = reactive([])
+  data = reactive<Item[]>([])
 
   state = ref('pending')
   meta = reactive({

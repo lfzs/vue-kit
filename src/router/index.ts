@@ -1,24 +1,27 @@
-import { createRouter, createWebHistory } from 'vue-router'
+import { createRouter as vueCreateRouter, createWebHistory, createMemoryHistory } from 'vue-router'
+import { setDocumentTitle, setForwardMetaBefore, setForwardMetaAfter } from '@/helper/router'
 import { routes } from './routes'
-import { setForwardMetaBefore, setForwardMetaAfter } from './meta-forward'
-import { setDocumentTitle } from './before'
+const isServer = typeof window === 'undefined'
 
-const router = createRouter({
-  routes,
-  history: createWebHistory('/'),
-})
+function createRouter() {
+  const history = isServer ? createMemoryHistory() : createWebHistory()
+  const router = vueCreateRouter({ routes, history })
 
-router.beforeEach((to) => {
-  setDocumentTitle(to)
-  setForwardMetaBefore(to)
+  router.beforeEach(to => {
+    if (!isServer) {
+      setDocumentTitle(to)
+    }
+    setForwardMetaBefore(to)
+    if (!to.matched.length) return '/404'
+  })
 
-  if (!to.matched.length) return '/404'
-})
+  router.afterEach(to => {
+    setForwardMetaAfter(to)
+  })
 
-router.afterEach(to => {
-  setForwardMetaAfter(to)
-})
+  return router
+}
 
 export {
-  router,
+  createRouter,
 }

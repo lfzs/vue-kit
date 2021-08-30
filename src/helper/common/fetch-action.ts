@@ -1,4 +1,4 @@
-import { isNil } from 'lodash-es'
+import { isNil } from 'lodash'
 
 // 装饰实例类的 fetchData 方法，将返回值赋值到 data
 // eslint-disable-next-line @typescript-eslint/no-explicit-any

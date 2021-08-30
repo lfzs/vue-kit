@@ -1,5 +1,5 @@
-import { fetchAction } from '@/util/common'
-import { axios } from '@/util/axios'
+import { fetchAction } from '@/helper/common'
+import { axios } from '@/helper/axios'
 import { reactive } from 'vue'
 
 class HomeStore {
