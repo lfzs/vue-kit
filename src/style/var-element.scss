@@ -1,4 +1,10 @@
-$--color-primary: teal;
+$--colors: (
+  (
+    primary: (
+      base: teal,
+    )
+  )
+);
 $--font-path: '~element-plus/theme-chalk/fonts';
 
 @import '~element-plus/packages/theme-chalk/src/index';

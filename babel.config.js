@@ -9,7 +9,7 @@ module.exports = {
     ['import', {
       libraryName: 'element-plus',
       customName: name => `element-plus/lib/components/${name.slice(3)}`,
-      customStyleName: name => `element-plus/lib/components/${name.slice(3)}/style`
+      customStyleName: name => `element-plus/lib/components/${name.slice(3)}/style`,
     }],
   ],
 }

@@ -21,7 +21,7 @@ module.exports = merge(base, {
     },
     proxy: {
       '/api': {
-        target: 'www.duelday.com',
+        target: 'http://www.duelday.com',
         changeOrigin: true,
         secure: false,
       },

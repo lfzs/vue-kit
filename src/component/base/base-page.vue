@@ -16,26 +16,20 @@
   />
 </template>
 
-<script lang="ts" setup>
+<script setup>
   import { watch, onBeforeUnmount, reactive, inject } from 'vue'
   import { useRoute } from 'vue-router'
-  import type { RouteComponent } from 'vue-router'
 
-  interface ComponentItem {
-    fullPath: string,
-    component: RouteComponent,
-  }
-  const props = defineProps<{
-    // component: RouteComponent,
-    // TODO vue defineProps 暂时不支持外部导入类型
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    component: any,
-  }>()
+  const props = defineProps({
+    component: {
+      type: Object,
+      default: () => ({})
+    },
+  })
 
-  const components = reactive<ComponentItem[]>([])
-
+  const components = reactive([])
   const route = useRoute()
-  const stoper = watch(() => props.component, (newValue: RouteComponent) => {
+  const stoper = watch(() => props.component, newValue => {
     if (route.meta.forward) {
       components.push({ fullPath: route.fullPath, component: newValue })
     } else {
