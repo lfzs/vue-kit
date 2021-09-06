@@ -7,7 +7,7 @@ export const APP_NAME = 'vue-kit'
 export const LOCAL_PREFIX = '_@_@_'
 
 // 请求/静态资源地址
-export const HOST = {
+export const BASE_URL = {
   development: '',
   staging: '',
   production: '',

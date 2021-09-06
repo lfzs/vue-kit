@@ -8,7 +8,7 @@ const requestCancelResponseData = {
 function handleResponseError(error: AxiosError<RequestResponseData>) {
   // 请求取消
   if (Axios.isCancel(error)) return Promise.reject(requestCancelResponseData)
-  return Promise.reject(error.response)
+  return Promise.reject(error.response?.data)
 }
 
 export {
