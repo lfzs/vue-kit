@@ -1,7 +1,6 @@
 import { AxiosResponse, RequestResponseData } from 'axios'
 import { router } from '@/entry/client'
 import { getErrorMessage } from '@/helper/common'
-import { IS_SERVER } from '@/constant'
 import { authStore } from '@/store'
 
 type Response = AxiosResponse<RequestResponseData>
@@ -32,7 +31,7 @@ async function handleResponse(response: Response) {
   // 返回值 code 为 0 才算成功
   if (response.data.code === 0) return response
 
-  if (!IS_SERVER) {
+  if (process.env.browser) {
     responseErrorToast(response)
   }
 

@@ -15,6 +15,3 @@ export const BASE_URL = {
 
 // 请求出错错误弹窗默认内容
 export const DEFAULT_ERROR_MESSAGE = '请求失败, 请重试'
-
-// 是否运行在 server 环境下
-export const IS_SERVER = typeof window === 'undefined'

@@ -1,3 +1,4 @@
+const webpack = require('webpack')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const CopyPlugin = require('copy-webpack-plugin')
 const { merge } = require('webpack-merge')
@@ -32,6 +33,10 @@ module.exports = merge(base, {
     path: resolve('../dist/client'),
   },
   plugins: [
+    new webpack.DefinePlugin({
+      // 客户端环境注入 browser 自动
+      'process.env.browser': '1',
+    }),
     new HtmlWebpackPlugin({
       template: resolve('../public/index.html'),
       favicon: resolve('../public/favicon.ico'),
