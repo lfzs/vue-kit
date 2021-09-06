@@ -11,4 +11,3 @@
   const { active, refreshCurrentRoute } = useRefreshCurrentRoute()
   provide('refreshCurrentRoute', refreshCurrentRoute)
 </script>
-

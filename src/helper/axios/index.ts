@@ -6,14 +6,19 @@ import { handleRequestError } from './interceptor/handle-request-error'
 import { handleResponse } from './interceptor/handle-response'
 import { handleResponseError } from './interceptor/handle-response-error'
 
-const config: AxiosRequestConfig = {
+const configDefault: AxiosRequestConfig = {
   baseURL: `${BASE_URL}/api`,
   timeout: 60000,
 }
 
-const axios: AxiosInstance = Axios.create(config)
-axios.interceptors.request.use(handleRequest, handleRequestError)
-axios.interceptors.response.use(handleResponse, handleResponseError)
+function creater(config = configDefault) {
+  const axios: AxiosInstance = Axios.create(config)
+  axios.interceptors.request.use(handleRequest, handleRequestError)
+  axios.interceptors.response.use(handleResponse, handleResponseError)
+  return axios
+}
+
+const axios = creater()
 
 export {
   axios,
