@@ -4,7 +4,7 @@
   </router-view>
 </template>
 
-<script lang="ts" setup>
+<script setup>
   import { provide } from 'vue'
   import { useRefreshCurrentRoute } from '@/hook/router'
 

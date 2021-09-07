@@ -1,5 +1,10 @@
 module.exports = {
-  presets: ['@babel/preset-env'],
+  presets: [
+    [
+      '@babel/preset-env',
+      process.env.SSR === '2' ? { targets: { node: 'current' } } : {},
+    ]
+  ],
   plugins: [
     'lodash',
     '@vue/babel-plugin-jsx',

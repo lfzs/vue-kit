@@ -6,4 +6,9 @@ module.exports = {
     './lib/eslint-config/vue.js',
     './lib/eslint-config/typescript.js',
   ],
+
+  ignorePatterns: [
+    'node_modules/**',
+    'dist/**',
+  ],
 }
