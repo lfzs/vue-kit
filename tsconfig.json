@@ -3,11 +3,7 @@
   "compilerOptions": {
     "target": "ESNext",
     "module": "ESNext",
-
     "strict": true,
-    "strictFunctionTypes": false,
-    "noImplicitAny": false,
-
     "jsx": "preserve",
     "moduleResolution": "node",
     "allowSyntheticDefaultImports": true,
