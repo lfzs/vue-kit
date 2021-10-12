@@ -1,17 +1,30 @@
 <template>
-  <div class="flex-center">
+  <div class="flex-center" @click="$router.push('signin')">
     <img src="@/static/logo.png" class="icon-logo">
   </div>
-  <h2 class="flex-center">{{ desc }}</h2>
-  <el-button type="primary">主要按钮</el-button>
-  <count-down :end="1630492642042" />
+  <h2 class="flex-center" @click="globalStore.incRouterKey">{{ desc }}</h2>
+  <div>{{ homeStore._fetchDataState }}</div>
+  <base-client-only>
+    <count-down :end="1690492642042" />
+  </base-client-only>
+  <div>{{ homeStore.data }}</div>
 </template>
 
 <script setup>
+  import { onFetch } from '@/util'
   import { CountDown } from '@/component/common'
-  import { ElButton } from 'element-plus'
+  import { useGlobalStore, useHomeStore } from '@/store'
+  import { useHead } from '@vueuse/head'
+  const homeStore = useHomeStore()
+  const globalStore = useGlobalStore()
 
-  import { homeStore } from '@/store'
-  await homeStore.fetchData()
+  await onFetch(async () => {
+    await homeStore.fetchData()
+  })
+
+  useHead({
+    title: Object.keys(homeStore.data),
+  })
+
   const desc = 'Hello Vue!'
 </script>

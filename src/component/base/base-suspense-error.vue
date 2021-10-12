@@ -9,7 +9,7 @@
 
 <script lang="ts" setup>
   import { computed } from 'vue'
-  import { getErrorMessage } from '@/helper/common'
+  import { getErrorMessage } from '@/util'
   import { RequestResponseData } from 'axios'
 
   interface Props {

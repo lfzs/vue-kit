@@ -4,7 +4,7 @@
 
 <script lang="ts" setup>
   import { computed, ref, onBeforeUnmount } from 'vue'
-  import { formatSecond } from '@/helper/common'
+  import { formatSecond } from '@/util'
   import dayjs from 'dayjs'
 
   interface Props {

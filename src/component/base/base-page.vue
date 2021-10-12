@@ -4,7 +4,7 @@
       v-if="(item.fullPath === $route.fullPath) && $route.meta.keepAlive"
       :component="item.component"
       :suspense="$route.meta.suspense"
-      @refresh="refreshCurrentRoute"
+      @refresh="() => global.incRouterKey()"
     />
   </keep-alive>
 
@@ -12,13 +12,15 @@
     v-if="!$route.meta.keepAlive"
     :component="component"
     :suspense="$route.meta.suspense"
-    @refresh="refreshCurrentRoute"
+    @refresh="() => global.incRouterKey()"
   />
 </template>
 
 <script setup>
-  import { watch, onBeforeUnmount, reactive, inject } from 'vue'
+  import { watch, onBeforeUnmount, reactive } from 'vue'
   import { useRoute } from 'vue-router'
+  import { useGlobalStore } from '@/store'
+  const global = useGlobalStore()
 
   const props = defineProps({
     component: {
@@ -30,7 +32,8 @@
   const components = reactive([])
   const route = useRoute()
   const stoper = watch(() => props.component, newValue => {
-    if (route.meta.forward) {
+    const { forward = true } = route.meta
+    if (forward) {
       components.push({ fullPath: route.fullPath, component: newValue })
     } else {
       // 后退删除后面所有路由
@@ -39,6 +42,5 @@
     }
   }, { immediate: true })
 
-  const refreshCurrentRoute = inject('refreshCurrentRoute')
   onBeforeUnmount(() => stoper())
 </script>

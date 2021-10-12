@@ -2,13 +2,13 @@ module.exports = {
   root: true,
 
   extends: [
-    './lib/eslint-config/base.js',
-    './lib/eslint-config/vue.js',
-    './lib/eslint-config/typescript.js',
+    require.resolve('./lib/eslint-config/base.js'),
+    require.resolve('./lib/eslint-config/vue.js'),
+    require.resolve('./lib/eslint-config/typescript.js'),
   ],
 
   ignorePatterns: [
     'node_modules/**',
-    'dist/**',
+    '/dist/**',
   ],
 }

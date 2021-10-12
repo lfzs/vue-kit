@@ -18,7 +18,10 @@
       type: Object,
       default: () => ({})
     },
-    suspense: Boolean,
+    suspense: {
+      type: Boolean,
+      default: true,
+    },
   })
   defineEmits(['refresh'])
 
@@ -26,7 +29,7 @@
   onErrorCaptured((e, instance, info) => {
     // 只捕获 setup function 的 error
     if (info === 'setup function') {
-      error.value = e
+      error.value = e || {}
     }
   })
 </script>

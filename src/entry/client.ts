@@ -1,8 +1,16 @@
-import { createApp } from './create-app'
-const { app, router } = createApp()
-router.isReady().then(() => app.mount('body'))
+import { nextTick } from 'vue'
+import { createApp } from '@/helper/app'
+import {
+  clearUselessLocalStorage,
+  initialState,
+  rootElementSetVhProperty,
+} from './util'
 
-export {
-  app,
-  router,
-}
+rootElementSetVhProperty()
+const { app, router, store } = createApp()
+
+router.isReady().then(() => {
+  initialState(store)
+  app.mount('body')
+  nextTick(() => clearUselessLocalStorage())
+})
