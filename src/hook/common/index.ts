@@ -1,1 +1,1 @@
-export { useRouteParam } from './use-route-param'
+export { useCounter } from './use-counter'

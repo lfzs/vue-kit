@@ -1,27 +1,25 @@
 <template>
-  <div class="base-suspense-error flex-center min-height-fullscreen" @click="$emit('refresh')">
+  <div
+    class="base-suspense-error flex-center min-height-fullscreen pointer"
+    @click="$emit('refresh')"
+  >
     {{ message }}
   </div>
 </template>
 
-<script>
-  import { defineComponent, computed } from 'vue'
-  import { getErrorMessage } from '@/util/common'
+<script lang="ts" setup>
+  import { computed } from 'vue'
+  import { getErrorMessage } from '@/util'
+  import { RequestResponseData } from 'axios'
 
-  export default defineComponent({
-    name: 'base-suspense-error',
-    emits: ['refresh'],
-    props: {
-      error: {
-        type: Object,
-        default: () => ({}),
-      },
-    },
+  interface Props {
+    error: RequestResponseData,
+  }
+  const props = defineProps<Props>()
 
-    setup(props) {
-      return {
-        message: computed(() => getErrorMessage(props.error)),
-      }
-    },
-  })
+  defineEmits<{
+    (e: 'refresh'): void,
+  }>()
+
+  const message = computed(() => getErrorMessage(props.error))
 </script>

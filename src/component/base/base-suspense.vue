@@ -10,30 +10,26 @@
   <component :is="component" v-else />
 </template>
 
-<script>
-  import { defineComponent, ref, onErrorCaptured } from 'vue'
-  export default defineComponent({
-    name: 'base-suspense',
-    emits: ['refresh'],
-    props: {
-      component: {
-        type: Object,
-        default: null,
-      },
+<script setup>
+  import { ref, onErrorCaptured } from 'vue'
 
-      suspense: {
-        type: Boolean,
-        default: true,
-      },
+  defineProps({
+    component: {
+      type: Object,
+      default: () => ({})
     },
-
-    setup() {
-      const error = ref(null)
-      onErrorCaptured((e, instance, info) => (info === 'setup function') && (error.value = e)) // 只捕获 setup function 的 error
-
-      return {
-        error,
-      }
+    suspense: {
+      type: Boolean,
+      default: true,
     },
+  })
+  defineEmits(['refresh'])
+
+  const error = ref(null)
+  onErrorCaptured((e, instance, info) => {
+    // 只捕获 setup function 的 error
+    if (info === 'setup function') {
+      error.value = e || {}
+    }
   })
 </script>

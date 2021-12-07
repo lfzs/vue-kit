@@ -1,26 +1,11 @@
 <template>
-  <router-view v-slot="{ Component, route }" v-if="active">
-    <base-page :component="Component" :route="route" />
+  <!-- TODO remove key 变不会完全销毁实例 v-if -->
+  <router-view v-slot="{ Component }" :key="globalStore.routerKey">
+    <base-page :component="Component" />
   </router-view>
 </template>
 
-<script>
-  import { provide, ref, nextTick, defineComponent } from 'vue'
-  export default defineComponent({
-    name: 'app',
-
-    setup() {
-      // 路由重载
-      const active = ref(true)
-      const refreshCurrentRoute = () => {
-        active.value = false
-        nextTick(() => active.value = true)
-      }
-      provide('refreshCurrentRoute', refreshCurrentRoute)
-
-      return {
-        active,
-      }
-    },
-  })
+<script setup>
+  import { useGlobalStore } from '@/store'
+  const globalStore = useGlobalStore()
 </script>

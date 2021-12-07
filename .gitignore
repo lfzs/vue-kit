@@ -1,6 +1,8 @@
 *.DS_Store
 node_modules/
-dist/
+/dist
+.env
+/.env.development
 .idea/
 jsconfig.json
 project.config.json

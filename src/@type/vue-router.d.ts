@@ -1,9 +1,8 @@
 declare module 'vue-router' {
   interface RouteMeta {
-    title?: string, // 当前页面的 title
-    forward?: boolean, // 当前页面是新页面（前进）
+    forward?: boolean, // 当前页面是新页面（前进，默认 true）
     keepAlive?: boolean, // 当前页面是否需要缓存
-    suspense?: boolean, // 当前页面实现需要显示 loading 状态
+    suspense?: boolean, // 当前页面异步加载需要显示的 loading 状态（默认 true）
   }
 }
 

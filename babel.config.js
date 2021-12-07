@@ -1,8 +1,21 @@
-module.exports = {
-  presets: ['@babel/preset-env'],
-  plugins: [
-    '@vue/babel-plugin-jsx',
-    ['component', { 'libraryName': 'element-plus', 'styleLibraryName': 'theme-chalk' }],
-    ['@babel/plugin-transform-runtime', { 'corejs': { 'version': 3, 'proposals': true } }],
-  ],
+module.exports = function(api) {
+  return {
+    presets: [
+      [
+        '@babel/preset-env',
+        {
+          // for webpack target node
+          targets: api.caller(caller => caller?.target === 'node') ? { node: 'current' } : {}
+        },
+      ]
+    ],
+
+    plugins: [
+      'lodash',
+      '@vue/babel-plugin-jsx',
+      ['@babel/plugin-transform-runtime', {
+        corejs: { version: 3, proposals: true },
+      }],
+    ],
+  }
 }
