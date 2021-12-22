@@ -1,5 +1,5 @@
 module.exports = {
-  extends: 'stylelint-config-standard',
+  extends: ['stylelint-config-standard'],
   rules: {
     'color-hex-length': null,
     'selector-type-no-unknown': null,
@@ -11,5 +11,21 @@ module.exports = {
   ignoreFiles: [
     'node_modules/**',
     './dist/**',
+  ],
+
+  overrides: [
+    {
+      files: ['**/*.less'],
+      customSyntax: 'postcss-less',
+    },
+    {
+      files: ['**/*.scss', '**/*.sass'],
+      extends: ['stylelint-config-standard-scss'],
+      customSyntax: 'postcss-sass',
+    },
+    {
+      files: ['**/*.vue', '**/*.html'],
+      customSyntax: 'postcss-html',
+    },
   ],
 }

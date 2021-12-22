@@ -11,7 +11,7 @@ const express = require('express')
 const { renderToString } = require('@vue/server-renderer')
 const { renderHeadToString } = require('@vueuse/head')
 const serialize = require('serialize-javascript')
-const chalk = require('chalk')
+const clc = require('cli-color')
 const proxy = require('./proxy')
 
 function logWebpackStats() {
@@ -19,8 +19,8 @@ function logWebpackStats() {
   // const info = stats.toJson()
   // const { warnings } = info
   // const { errors } = info
-  // const warnMsg = chalk.yellow.bold(`${warnings.length} warning`)
-  // const errorMsg = chalk.red.bold(`${errors.length} error`)
+  // const warnMsg = clc.yellow.bold(`${warnings.length} warning`)
+  // const errorMsg = clc.red.bold(`${errors.length} error`)
 
   // if (warnings.length) {
   //   console.log(warnMsg)
@@ -104,7 +104,7 @@ async function main() {
 
   instance.waitUntilValid(() => {
     const { PORT } = process.env
-    const msg = chalk.green.underline.bold(`\nserver is running at http://127.0.0.1:${PORT}`)
+    const msg = clc.green.underline.bold(`\nserver is running at http://127.0.0.1:${PORT}`)
     app.listen(PORT, '0.0.0.0', () => console.log(msg))
   })
 }

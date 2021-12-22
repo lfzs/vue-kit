@@ -22,7 +22,7 @@ const plugins = [
   }),
   new Dotenv({ path: envPath }),
   new StyleLintPlugin({
-    extensions: ['vue', 'html', 'css', 'less', 'scss', 'sass'],
+    files: ['**/*.{vue,html,css,less,scss,sass}'],
     context: resolve('../src'),
     emitError: true,
     emitWarning: true,
