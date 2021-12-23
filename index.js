@@ -1,6 +1,8 @@
 const path = require('path')
 const resolve = dir => path.join(__dirname, dir)
-require('dotenv').config({ path: resolve('./.env') })
+
+const envPath = require.resolve(`./.env.${process.env.APP_ENV}`)
+require('dotenv').config({ path: envPath })
 
 const fs = require('fs')
 const serialize = require('serialize-javascript')
@@ -8,7 +10,7 @@ const { renderToString } = require('@vue/server-renderer')
 const { renderHeadToString } = require('@vueuse/head')
 const express = require('express')
 const { createProxyMiddleware } = require('http-proxy-middleware')
-const { createApp } = require('../dist/server')
+const { createApp } = require('./dist/server')
 
 const app = new express()
 app.set('x-powered-by', false)
@@ -20,13 +22,13 @@ const options = {
   etag: false,
   // maxAge: '30d',
 }
-app.use('/static', express.static(resolve('../dist/client/static'), options))
-app.use('/js', express.static(resolve('../dist/client/js'), options))
-app.use('/css', express.static(resolve('../dist/client/css'), options))
-app.use('/favicon.ico', express.static(resolve('../dist/client/favicon.ico'), { lastModified: false }))
+app.use('/static', express.static(resolve('./dist/client/static'), options))
+app.use('/js', express.static(resolve('./dist/client/js'), options))
+app.use('/css', express.static(resolve('./dist/client/css'), options))
+app.use('/favicon.ico', express.static(resolve('./dist/client/favicon.ico'), { lastModified: false }))
 app.use('/api', createProxyMiddleware({ target: process.env.SERVER_HOST, changeOrigin: true }))
 
-const template = fs.readFileSync(resolve('../dist/client/index.html'))
+const template = fs.readFileSync(resolve('./dist/client/index.html'))
 app.get('*', async (req, res) => {
   try {
     const { app, router, store, head } = await createApp(req.url)

@@ -1,7 +1,15 @@
 html {
   box-sizing: border-box;
   word-break: break-word;
-  font-family: system -apple-system, BlinkMacSystemFont, 'Helvetica Neue', 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', Arial, sans-serif;
+  font-family:
+    'system -apple-system',
+    BlinkMacSystemFont,
+    'Helvetica Neue',
+    'PingFang SC',
+    'Hiragino Sans GB',
+    'Microsoft YaHei',
+    Arial,
+    sans-serif;
   color: @color;
   background-color: @bg;
   // 默认行高设为 1.15
@@ -44,14 +52,6 @@ button {
   border: none;
 }
 
-::-moz-placeholder {
-  color: @placeholder;
-}
-
-::-webkit-input-placeholder {
-  color: @placeholder;
-}
-
-:-ms-input-placeholder {
+::placeholder {
   color: @placeholder;
 }
